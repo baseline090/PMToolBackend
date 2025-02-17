@@ -175,55 +175,101 @@ exports.addCandidate = async (req, res) => {
   
 
 
+// exports.deleteCandidate = async (req, res) => {
+//     try {
+//       const { role, id } = req.params; // Candidate role and ID
+//       const hrId = req.user.id; // Logged-in HR's ID
+  
+//       console.log("🔹 HR Deleting Candidate:", { role, id });
+  
+//       // Allowed roles for deletion (Admins & Super Admins cannot be deleted)
+//       const allowedRoles = ["HR", "BDM", "PM", "Employee", "TeamLead", "HM"];
+  
+//       // Check if the role is allowed
+//       if (!allowedRoles.includes(role)) {
+//         return res.status(403).json({ message: "Access denied: You cannot delete this role" });
+//       }
+  
+//       // Fetch the HR user to check their access
+//       const hr = await HR.findById(hrId);
+//       if (!hr) {
+//         return res.status(404).json({ message: "HR not found" });
+//       }
+  
+//       // Check if HR has 'delete' permission
+//       if (!hr.access.includes("delete")) {
+//         return res.status(403).json({ message: "Access denied: You do not have permission to delete candidates" });
+//       }
+  
+//       // Check if the role exists in the mapped models
+//       if (!roleModelMap[role]) {
+//         return res.status(400).json({ message: "Invalid role" });
+//       }
+  
+//       // Get the corresponding model
+//       const RoleModel = roleModelMap[role];
+  
+//       // Find the candidate
+//       const candidate = await RoleModel.findById(id);
+//       if (!candidate) {
+//         return res.status(404).json({ message: `${role} not found` });
+//       }
+  
+//       // Delete the candidate
+//       await RoleModel.findByIdAndDelete(id);
+  
+//       console.log(`✅ ${role} Deleted Successfully:`, candidate);
+//       res.status(200).json({ message: `${role} deleted successfully` });
+  
+//     } catch (error) {
+//       console.error("❌ Error Deleting Candidate:", error.message);
+//       res.status(500).json({ message: "Error deleting candidate", error: error.message });
+//     }
+//   };
+  
+
+
+
+
+// ✅ HR - Delete Candidate API (with Access Control)
 exports.deleteCandidate = async (req, res) => {
-    try {
-      const { role, id } = req.params; // Candidate role and ID
-      const hrId = req.user.id; // Logged-in HR's ID
-  
-      console.log("🔹 HR Deleting Candidate:", { role, id });
-  
-      // Allowed roles for deletion (Admins & Super Admins cannot be deleted)
-      const allowedRoles = ["HR", "BDM", "PM", "Employee", "TeamLead", "HM"];
-  
-      // Check if the role is allowed
-      if (!allowedRoles.includes(role)) {
-        return res.status(403).json({ message: "Access denied: You cannot delete this role" });
-      }
-  
-      // Fetch the HR user to check their access
-      const hr = await HR.findById(hrId);
-      if (!hr) {
-        return res.status(404).json({ message: "HR not found" });
-      }
-  
-      // Check if HR has 'delete' permission
-      if (!hr.access.includes("delete")) {
-        return res.status(403).json({ message: "Access denied: You do not have permission to delete candidates" });
-      }
-  
-      // Check if the role exists in the mapped models
-      if (!roleModelMap[role]) {
-        return res.status(400).json({ message: "Invalid role" });
-      }
-  
-      // Get the corresponding model
-      const RoleModel = roleModelMap[role];
-  
-      // Find the candidate
-      const candidate = await RoleModel.findById(id);
-      if (!candidate) {
-        return res.status(404).json({ message: `${role} not found` });
-      }
-  
-      // Delete the candidate
-      await RoleModel.findByIdAndDelete(id);
-  
-      console.log(`✅ ${role} Deleted Successfully:`, candidate);
-      res.status(200).json({ message: `${role} deleted successfully` });
-  
-    } catch (error) {
-      console.error("❌ Error Deleting Candidate:", error.message);
-      res.status(500).json({ message: "Error deleting candidate", error: error.message });
+  try {
+    const { candidateId, role } = req.body;
+    const hrId = req.user.id; // HR ID from JWT
+
+    console.log("🔹 HR Deleting Candidate:", req.body);
+
+    // Forbidden: HR cannot delete Super Admin
+    if (role === "super-admin") {
+      return res.status(403).json({ message: "Access denied: You cannot delete a Super Admin" });
     }
-  };
-  
+
+    // Fetch the HR user to check their access
+    const hr = await HR.findById(hrId);
+    if (!hr) {
+      return res.status(404).json({ message: "HR not found" });
+    }
+
+    // Check if HR has 'delete' permission
+    if (!hr.access.includes("delete")) {
+      return res.status(403).json({ message: "Access denied: You do not have permission to delete candidates" });
+    }
+
+    // Fetch the candidate to delete based on role
+    const RoleModel = roleModelMap[role];
+    const candidate = await RoleModel.findById(candidateId);
+    if (!candidate) {
+      return res.status(404).json({ message: `${role} not found` });
+    }
+
+    // Delete the candidate
+    await RoleModel.findByIdAndDelete(candidateId);
+
+    console.log(`✅ ${role} Deleted Successfully:`, candidate);
+    res.status(200).json({ message: `${role} deleted successfully`, data: candidate });
+
+  } catch (error) {
+    console.error("❌ Error Deleting Candidate:", error.message);
+    res.status(500).json({ message: "Error deleting candidate", error: error.message });
+  }
+};

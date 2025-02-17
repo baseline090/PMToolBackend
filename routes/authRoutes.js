@@ -53,4 +53,20 @@ router.post('/hr/add/candidate', auth.authenticateJWT, auth.authorizeRole('HR'),
   body('role').isIn(['BDM', 'HM', 'PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
 ], hrController.addCandidate);
 
+
+
+// ✅ HR - Delete Candidate (Protected Route)
+router.delete('/hr/delete/candidate', auth.authenticateJWT, auth.authorizeRole('HR'), [
+  body('candidateId').notEmpty(),
+  body('role').isIn(['BDM', 'HM', 'PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
+], hrController.deleteCandidate);
+
+
+
+
+
+
+
 module.exports = router;
+
+
