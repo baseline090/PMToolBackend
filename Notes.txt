@@ -1,0 +1,39 @@
+Task Description: Today, I am working on creating APIs for registration, login, and forgot password, 
+including OTP generation. All of these are role-based, supporting admin, sub-admin, and super-admin roles. 
+The JWT token functionality is implemented based on their respective roles.
+
+my folder structure:
+── backend/
+│   ├── config/
+│   │   └── db.js                
+│   ├── controllers/
+│   │   ├── adminController.js       
+│   ├── middleware/
+│   │   ├── auth.js  
+│   ├── models/ 
+│   │   ├── Admin.js                       
+│   ├── routes/
+│   │   └── authRoutes.js         
+│   ├── utils/ 
+│   │   └── tokenBlacklist.js
+├── .env                          
+├── server.js              
+├── .gitignore                       
+├── package.json                  
+└── README.md  
+
+
+so now i want to make an update like in registratiopn api
+now admin register in role base i want three role like
+1.Super Admin
+2.Sub Admin
+3.Admin
+they are the roles
+
+so wile i register it wer asted to chose role es to chose and only these three and this wer save in 
+db acording to taht so in future i can give acess the particular admin on the bases of the role
+if any oter filed insted of ths then it wil say invalid role
+so just to this part 
+and tell me how can i test this on postman
+
+i hope you undersatnd
