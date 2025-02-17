@@ -7,7 +7,7 @@ const hrController = require('../controllers/HRController');
 const superAdminController = require('../controllers/superAdminController');
 
 
-
+/////---------super admin routes -----------------------------------//////
 
 // ✅ Register Super Admin
 router.post('/register-super-admin', [
@@ -32,6 +32,10 @@ router.post('/admins/login', [
 ], superAdminController.adminLogin);  // 🔥 Make sure this function is correctly imported
 
 
+// ✅ Super Admin Routes
+router.post('/super-admin/view/allcandidate', auth.authenticateJWT, auth.authorizeRole('super-admin'), superAdminController.viewAllCandidates);
+router.post('/super-admin/delete/candidate', auth.authenticateJWT, auth.authorizeRole('super-admin'), superAdminController.deleteCandidate);
+router.post('/super-admin/update/allcandidate', auth.authenticateJWT, auth.authorizeRole('super-admin'), superAdminController.updateCandidate);
 
 
 

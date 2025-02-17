@@ -156,7 +156,6 @@ exports.adminLogin = async (req, res) => {
 
 
 
-
 // ✅ Register Admin/Sub-Admin
 exports.registerAdminSubAdmin = async (req, res) => {
   try {
@@ -248,6 +247,140 @@ exports.registerAdminSubAdmin = async (req, res) => {
 
 
 
+
+
+// ✅ View All Candidates for Super Admin
+exports.viewAllCandidates = async (req, res) => {
+  try {
+    const { role } = req.body; // Role passed in the request body
+    const superAdmin = await SuperAdmin.findOne({ access: 'full-access', role: 'super-admin' });
+
+    if (!superAdmin) {
+      return res.status(403).json({ message: "Unauthorized access" });
+    }
+
+    // Validate role
+    if (!['BDM', 'HR', 'HM', 'PM', 'Employee', 'TeamLead'].includes(role)) {
+      return res.status(400).json({ message: "Invalid role specified" });
+    }
+
+    // Fetch candidates based on role
+    let candidates = [];
+    switch(role) {
+      case 'BDM':
+        candidates = await BDM.find();
+        break;
+      case 'HR':
+        candidates = await HR.find();
+        break;
+      case 'HM':
+        candidates = await HM.find();
+        break;
+      case 'PM':
+        candidates = await PM.find();
+        break;
+      case 'Employee':
+        candidates = await Employee.find();
+        break;
+      case 'TeamLead':
+        candidates = await TeamLead.find();
+        break;
+    }
+
+    res.status(200).json({
+      message: "Candidates fetched successfully",
+      data: candidates,
+    });
+  } catch (error) {
+    console.error("❌ Error Fetching Candidates:", error.message);
+    res.status(500).json({ message: "Error fetching candidates", error: error.message });
+  }
+};
+
+// ✅ Delete Candidate for Super Admin
+exports.deleteCandidate = async (req, res) => {
+  try {
+    const { candidateId } = req.body; // Candidate ID passed in the request body
+    const superAdmin = await SuperAdmin.findOne({ access: 'full-access', role: 'super-admin' });
+
+    if (!superAdmin) {
+      return res.status(403).json({ message: "Unauthorized access" });
+    }
+
+    // Check if the candidate exists in any collection and delete
+    let candidateFound = false;
+    const collections = [BDM, HR, HM, PM, Employee, TeamLead];
+    for (const Model of collections) {
+      const candidate = await Model.findById(candidateId);
+      if (candidate) {
+        await Model.findByIdAndDelete(candidateId);
+        candidateFound = true;
+        break;
+      }
+    }
+
+    if (!candidateFound) {
+      return res.status(404).json({ message: "Candidate not found" });
+    }
+
+    res.status(200).json({ message: "Candidate deleted successfully" });
+  } catch (error) {
+    console.error("❌ Error Deleting Candidate:", error.message);
+    res.status(500).json({ message: "Error deleting candidate", error: error.message });
+  }
+};
+
+// ✅ Update Candidate for Super Admin
+exports.updateCandidate = async (req, res) => {
+  try {
+    const { candidateId, updateData, role } = req.body; // Candidate ID and update data passed in the request body
+    const superAdmin = await SuperAdmin.findOne({ access: 'full-access', role: 'super-admin' });
+
+    if (!superAdmin) {
+      return res.status(403).json({ message: "Unauthorized access" });
+    }
+
+    // Validate role
+    if (!['BDM', 'HR', 'HM', 'PM', 'Employee', 'TeamLead'].includes(role)) {
+      return res.status(400).json({ message: "Invalid role specified" });
+    }
+
+    // Find and update candidate in the respective collection
+    let updatedCandidate = null;
+    switch(role) {
+      case 'BDM':
+        updatedCandidate = await BDM.findByIdAndUpdate(candidateId, updateData, { new: true });
+        break;
+      case 'HR':
+        updatedCandidate = await HR.findByIdAndUpdate(candidateId, updateData, { new: true });
+        break;
+      case 'HM':
+        updatedCandidate = await HM.findByIdAndUpdate(candidateId, updateData, { new: true });
+        break;
+      case 'PM':
+        updatedCandidate = await PM.findByIdAndUpdate(candidateId, updateData, { new: true });
+        break;
+      case 'Employee':
+        updatedCandidate = await Employee.findByIdAndUpdate(candidateId, updateData, { new: true });
+        break;
+      case 'TeamLead':
+        updatedCandidate = await TeamLead.findByIdAndUpdate(candidateId, updateData, { new: true });
+        break;
+    }
+
+    if (!updatedCandidate) {
+      return res.status(404).json({ message: "Candidate not found" });
+    }
+
+    res.status(200).json({
+      message: "Candidate updated successfully",
+      data: updatedCandidate,
+    });
+  } catch (error) {
+    console.error("❌ Error Updating Candidate:", error.message);
+    res.status(500).json({ message: "Error updating candidate", error: error.message });
+  }
+};
 
 
 
