@@ -1,6 +1,5 @@
 const express = require('express');
 const { body } = require('express-validator');
-// const adminController = require('../controllers/adminController');
 const router = express.Router();
 const auth = require('../middleware/auth');
 const multer = require('multer');
@@ -17,11 +16,6 @@ router.post('/register-super-admin', [
   body('confirmPassword').exists(),
 ], superAdminController.registerSuperAdmin);
 
-// // ✅ Login Super Admin
-// router.post('/login/super-admin', [
-//   body('email').isEmail(),
-//   body('password').notEmpty(),
-// ], superAdminController.loginSuperAdmin);
 
 // ✅ Register Admin/Sub-Admin (Protected Route)
 router.post('/register-admin-subadmin', auth.authenticateJWT, auth.authorizeRole('super-admin'), [
@@ -63,6 +57,28 @@ router.delete('/hr/delete/candidate', auth.authenticateJWT, auth.authorizeRole('
 
 
 
+
+
+// ✅ HR - View Candidate (Protected Route)
+router.get('/hr/view/candidate', auth.authenticateJWT, auth.authorizeRole('HR'), [
+  body('candidateId').notEmpty(),
+  body('role').isIn(['BDM', 'HM', 'PM', 'Employee', 'TeamLead']) // ✅ Ensure the candidate's role is one of the allowed roles
+], hrController.viewCandidate);
+
+
+// ✅ HR - View All Candidates API (Protected Route)
+router.get('/hr/view/allcandidates', auth.authenticateJWT, auth.authorizeRole('HR'), [
+  body('role').isIn(['BDM', 'HM', 'PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
+], hrController.viewAllCandidates);
+
+
+
+
+// ✅ HR - Update Candidate (Protected Route)
+router.put('/hr/update/candidate', auth.authenticateJWT, auth.authorizeRole('HR'), [
+  body('candidateId').notEmpty(),
+  body('role').isIn(['BDM', 'HM', 'PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
+], hrController.updateCandidate);
 
 
 
