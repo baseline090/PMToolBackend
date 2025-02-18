@@ -80,8 +80,6 @@ router.get('/hr/view/allcandidates', auth.authenticateJWT, auth.authorizeRole('H
 ], hrController.viewAllCandidates);
 
 
-
-
 // ✅ HR - Update Candidate (Protected Route)
 router.put('/hr/update/candidate', auth.authenticateJWT, auth.authorizeRole('HR'), [
   body('candidateId').notEmpty(),
@@ -128,8 +126,6 @@ router.get('/bdm/view/candidate', auth.authenticateJWT, auth.authorizeRole('BDM'
 router.get('/bdm/view/allcandidates', auth.authenticateJWT, auth.authorizeRole('BDM'), [
   body('role').isIn(['HM', 'PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
 ], bdmController.viewAllCandidates);
-
-
 
 
 // ✅ BDM - Update Candidate (Protected Route)
