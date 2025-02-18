@@ -4,6 +4,7 @@ const router = express.Router();
 const auth = require('../middleware/auth');
 const multer = require('multer');
 const hrController = require('../controllers/HRController');
+const bdmController = require('../controllers/BDMController');
 const superAdminController = require('../controllers/superAdminController');
 
 
@@ -46,7 +47,6 @@ router.put('/super-admin/update/allcandidate', auth.authenticateJWT, auth.author
 ////////------------------HR Routes -------------------------------------------------////
 
 
-
 // ✅ HR -  own update profile (Protected Route)
 router.put('/hr/update/profile', auth.authenticateJWT, auth.authorizeRole('HR'), hrController.updateHRProfile);
 
@@ -60,15 +60,11 @@ router.post('/hr/add/candidate', auth.authenticateJWT, auth.authorizeRole('HR'),
 ], hrController.addCandidate);
 
 
-
 // ✅ HR - Delete Candidate (Protected Route)
 router.delete('/hr/delete/candidate', auth.authenticateJWT, auth.authorizeRole('HR'), [
   body('candidateId').notEmpty(),
   body('role').isIn(['BDM', 'HM', 'PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
 ], hrController.deleteCandidate);
-
-
-
 
 
 // ✅ HR - View Candidate (Protected Route)
@@ -93,6 +89,63 @@ router.put('/hr/update/candidate', auth.authenticateJWT, auth.authorizeRole('HR'
 ], hrController.updateCandidate);
 
 /////////////---------------------------------------------------------------------------------///////////////////////////////////////////////
+
+
+
+
+
+////////------------------BDM Routes -------------------------------------------------////
+
+
+// ✅ BDM -  own update profile (Protected Route)
+router.put('/bdm/update/profile', auth.authenticateJWT, auth.authorizeRole('BDM'), bdmController.updateBDMProfile);
+
+
+// ✅ BDM - Add Candidate (Protected Route)
+router.post('/bdm/add/candidate', auth.authenticateJWT, auth.authorizeRole('BDM'), [
+  body('name').notEmpty(),
+  body('username').notEmpty(),
+  body('email').isEmail(),
+  body('role').isIn(['HM', 'PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
+], bdmController.addCandidate);
+
+
+// ✅ BDM - Delete Candidate (Protected Route)
+router.delete('/bdm/delete/candidate', auth.authenticateJWT, auth.authorizeRole('BDM'), [
+  body('candidateId').notEmpty(),
+  body('role').isIn(['HM', 'PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
+], bdmController.deleteCandidate);
+
+
+// ✅ BDM - View Candidate (Protected Route)
+router.get('/bdm/view/candidate', auth.authenticateJWT, auth.authorizeRole('BDM'), [
+  body('candidateId').notEmpty(),
+  body('role').isIn(['HM', 'PM', 'Employee', 'TeamLead']) // ✅ Ensure the candidate's role is one of the allowed roles
+], bdmController.viewCandidate);
+
+
+// ✅ BDM - View All Candidates API (Protected Route)
+router.get('/bdm/view/allcandidates', auth.authenticateJWT, auth.authorizeRole('BDM'), [
+  body('role').isIn(['HM', 'PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
+], bdmController.viewAllCandidates);
+
+
+
+
+// ✅ BDM - Update Candidate (Protected Route)
+router.put('/bdm/update/candidate', auth.authenticateJWT, auth.authorizeRole('BDM'), [
+  body('candidateId').notEmpty(),
+  body('role').isIn(['HM', 'PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
+], bdmController.updateCandidate);
+
+/////////////---------------------------------------------------------------------------------///////////////////////////////////////////////
+
+
+
+
+
+
+
 
 
 

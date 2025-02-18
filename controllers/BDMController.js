@@ -18,57 +18,57 @@ const roleModelMap = {
 
 
 // ✅ Update HR Profile
-exports.updateHRProfile = async (req, res) => {
+exports.updateBDMProfile = async (req, res) => {
   try {
     const { id } = req.user; // Extracted from JWT
     const { name, username, dob, mobile, email, residenceAddress } = req.body;
 
     // 1️⃣ **Check if the logged-in user is HR**
-    const hr = await HR.findOne({ _id: id, role: "HR" });
+    const bdm = await BDM.findOne({ _id: id, role: "BDM" });
 
-    if (!hr) {
+    if (!bdm) {
       return res.status(403).json({ message: "Unauthorized access" });
     }
 
     // 2️⃣ **Update the profile fields if provided**
-    if (name) hr.name = name;
-    if (username) hr.username = username;
-    if (dob) hr.dob = dob;
-    if (mobile) hr.mobile = mobile;
-    if (email) hr.email = email;
-    if (residenceAddress) hr.residenceAddress = residenceAddress;
+    if (name) bdm.name = name;
+    if (username) bdm.username = username;
+    if (dob) bdm.dob = dob;
+    if (mobile) bdm.mobile = mobile;
+    if (email) bdm.email = email;
+    if (residenceAddress) bdm.residenceAddress = residenceAddress;
 
-    await hr.save();
+    await bdm.save();
 
-    res.status(200).json({ message: "HR profile updated successfully", data: hr });
+    res.status(200).json({ message: "BDM profile updated successfully", data: bdm });
 
   } catch (error) {
-    console.error("❌ Error Updating HR Profile:", error.message);
+    console.error("❌ Error Updating BDM Profile:", error.message);
     res.status(500).json({ message: "Error updating profile", error: error.message });
   }
 };
 
 
 
-// ✅ HR - Add Candidate API (with Access Control)
+// ✅ BDM - Add Candidate API (with Access Control)
 exports.addCandidate = async (req, res) => {
     try {
       const { name, username, password, confirmPassword, dob, mobile, email, residenceAddress, role } = req.body;
-      const hrId = req.user.id; // HR ID from JWT
+      const bdmId = req.user.id; // BDM ID from JWT
   
-      console.log("🔹 HR Adding Candidate:", req.body);
+      console.log("🔹 BDM Adding Candidate:", req.body);
   
       // Allowed roles for adding (Admins & Super Admins cannot be added)
-      const allowedRoles = ["HR", "BDM", "PM", "Employee", "TeamLead", "HM"];
+      const allowedRoles = ["PM", "Employee", "TeamLead", "HM"];
   
-      // Fetch the HR user to check their access
-      const hr = await HR.findById(hrId);
-      if (!hr) {
-        return res.status(404).json({ message: "HR not found" });
+      // Fetch the BDM user to check their access
+      const bdm = await BDM.findById(bdmId);
+      if (!bdm) {
+        return res.status(404).json({ message: "BDM not found" });
       }
   
-      // Check if HR has 'add' permission
-      if (!hr.access.includes("add")) {
+      // Check if BDM has 'add' permission
+      if (!bdm.access.includes("add")) {
         return res.status(403).json({ message: "Access denied: You do not have permission to add candidates" });
       }
   
@@ -131,13 +131,13 @@ exports.addCandidate = async (req, res) => {
   
 
 
-// ✅ HR - Delete Candidate API (with Access Control)
+// ✅ BDM - Delete Candidate API (with Access Control)
 exports.deleteCandidate = async (req, res) => {
   try {
     const { candidateId, role } = req.body;
-    const hrId = req.user.id; // HR ID from JWT
+    const bdmId = req.user.id; // BDM ID from JWT
 
-    console.log("🔹 HR Deleting Candidate:", req.body);
+    console.log("🔹 BDM Deleting Candidate:", req.body);
 
     // Forbidden: HR cannot delete Super Admin
     if (role === "super-admin") {
@@ -145,13 +145,13 @@ exports.deleteCandidate = async (req, res) => {
     }
 
     // Fetch the HR user to check their access
-    const hr = await HR.findById(hrId);
-    if (!hr) {
-      return res.status(404).json({ message: "HR not found" });
+    const bdm = await BDM.findById(bdmId);
+    if (!bdm) {
+      return res.status(404).json({ message: "BDM not found" });
     }
 
-    // Check if HR has 'delete' permission
-    if (!hr.access.includes("delete")) {
+    // Check if BDM has 'delete' permission
+    if (!bdm.access.includes("delete")) {
       return res.status(403).json({ message: "Access denied: You do not have permission to delete candidates" });
     }
 
@@ -176,20 +176,20 @@ exports.deleteCandidate = async (req, res) => {
 
 
 
-// ✅ HR - View Candidate Profile API (with Access Control)
+// ✅ BDM - View Candidate Profile API (with Access Control)
 exports.viewCandidate = async (req, res) => {
   try {
     const { candidateId } = req.body; // Get the candidate ID from the request body
-    const hrId = req.user.id; // HR ID from JWT
+    const bdmId = req.user.id; // BDM ID from JWT
 
     // Fetch the HR user to check their access
-    const hr = await HR.findById(hrId);
-    if (!hr) {
-      return res.status(404).json({ message: "HR not found" });
+    const bdm = await BDM.findById(bdmId);
+    if (!bdm) {
+      return res.status(404).json({ message: "BDM not found" });
     }
 
-    // Check if HR has 'view' permission
-    if (!hr.access.includes("view")) {
+    // Check if BDM has 'view' permission
+    if (!bdm.access.includes("view")) {
       return res.status(403).json({ message: "Access denied: You do not have permission to view profiles" });
     }
 
@@ -200,8 +200,7 @@ exports.viewCandidate = async (req, res) => {
     }
 
     // Fetch the candidate profile to view from allowed collections (if not Super Admin)
-    const candidate = await HR.findById(candidateId) || 
-                      await BDM.findById(candidateId) ||
+    const candidate = await BDM.findById(candidateId) ||
                       await HM.findById(candidateId) ||
                       await PM.findById(candidateId) ||
                       await Employee.findById(candidateId) ||
@@ -222,21 +221,19 @@ exports.viewCandidate = async (req, res) => {
 
 
 
-// ✅ HR - View All Candidates API (with role filtering in the body)
+// ✅ BDM - View All Candidates API (with role filtering in the body)
 exports.viewAllCandidates = async (req, res) => {
   try {
     const { role } = req.body; // Role passed in the request body
 
     // Validate role
-    if (!['BDM', 'HM', 'PM', 'Employee', 'TeamLead'].includes(role)) {
+    if (!['HM', 'PM', 'Employee', 'TeamLead'].includes(role)) {
       return res.status(400).json({ message: "Invalid role specified" });
     }
 
     // Dynamically fetch candidates based on role (collection)
     let candidates = [];
-    if (role === 'BDM') {
-      candidates = await BDM.find();
-    } else if (role === 'HM') {
+    if (role === 'HM') {
       candidates = await HM.find();
     } else if (role === 'PM') {
       candidates = await PM.find();
@@ -262,26 +259,25 @@ exports.viewAllCandidates = async (req, res) => {
 
 
 
-// ✅ HR - Update Candidate Profile API (with Access Control)
+// ✅ BDM - Update Candidate Profile API (with Access Control)
 exports.updateCandidate = async (req, res) => {
   try {
     const { candidateId, updatedFields } = req.body;  // Get the candidate ID and the fields to update
-    const hrId = req.user.id; // HR ID from JWT
+    const bdmId = req.user.id; // HR ID from JWT
 
-    // Fetch the HR user to check their access
-    const hr = await HR.findById(hrId);
-    if (!hr) {
-      return res.status(404).json({ message: "HR not found" });
+    // Fetch the BDM user to check their access
+    const bdm = await BDM.findById(bdmId);
+    if (!bdm) {
+      return res.status(404).json({ message: "BDM not found" });
     }
 
-    // Check if HR has 'update' or 'edit' permission
-    if (!(hr.access.includes("update") || hr.access.includes("edit"))) {
+    // Check if BDM has 'update' or 'edit' permission
+    if (!(bdm.access.includes("update") || bdm.access.includes("edit"))) {
       return res.status(403).json({ message: "Access denied: You do not have permission to update profiles" });
     }
 
     // Fetch the candidate profile to update
-    const candidate = await HR.findById(candidateId) || 
-                      await BDM.findById(candidateId) ||
+    const candidate = await BDM.findById(candidateId) ||
                       await HM.findById(candidateId) ||
                       await PM.findById(candidateId) ||
                       await Employee.findById(candidateId) ||
@@ -291,7 +287,7 @@ exports.updateCandidate = async (req, res) => {
       return res.status(404).json({ message: "Candidate not found" });
     }
 
-    // Check if candidate is Super Admin, HR can't update Super Admin profiles
+    // Check if candidate is Super Admin, BDM can't update Super Admin profiles
     const superAdmin = await SuperAdmin.findById(candidateId);
     if (superAdmin) {
       return res.status(403).json({ message: "Access denied: You cannot update the Super Admin profile" });

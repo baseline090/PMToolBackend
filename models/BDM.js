@@ -10,7 +10,7 @@ const bdmSchema = new mongoose.Schema(
     mobile: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     residenceAddress: { type: String, required: true },
-    access: { type: String, default: "view,edit,update,add" },
+    access: { type: String, default: "view,edit,update,add,delete" },
     role: { type: String, default: "BDM" },
     
     permissions: { type: [String], default: [] },
