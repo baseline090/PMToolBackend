@@ -6,6 +6,10 @@ const multer = require('multer');
 const hrController = require('../controllers/HRController');
 const bdmController = require('../controllers/BDMController');
 const superAdminController = require('../controllers/superAdminController');
+const hmController = require('../controllers/HMController')
+const pmController = require('../controllers/PMController')
+const teamleadController = require('../controllers/TeamLeadController')
+const employeeController = require('../controllers/EmployeeController')
 
 
 /////---------super admin routes -----------------------------------//////
@@ -138,6 +142,94 @@ router.put('/bdm/update/candidate', auth.authenticateJWT, auth.authorizeRole('BD
 
 
 
+////////------------------HM Routes -------------------------------------------------////
+
+
+// ✅ HM -  own update profile (Protected Route)
+router.put('/hm/update/profile', auth.authenticateJWT, auth.authorizeRole('HM'), hmController.updateHMProfile);
+
+
+// ✅ HM - View Candidate (Protected Route)
+router.get('/hm/view/candidate', auth.authenticateJWT, auth.authorizeRole('HM'), [
+  body('candidateId').notEmpty(),
+  body('role').isIn(['Employee', 'TeamLead']), // ✅ Ensure the candidate's role is one of the allowed roles
+], hmController.viewCandidate);
+
+
+// ✅ HM - View All Candidates API (Protected Route)
+router.get('/hm/view/allcandidates', auth.authenticateJWT, auth.authorizeRole('HM'), [
+  body('role').isIn([ 'Employee', 'TeamLead']), // ✅ Allowed Roles
+], hmController.viewAllCandidates);
+
+
+
+/////////////---------------------------------------------------------------------------------///////////////////////////////////////////////
+
+
+////////------------------PM Routes -------------------------------------------------////
+
+
+// ✅ PM -  own update profile (Protected Route)
+router.put('/pm/update/profile', auth.authenticateJWT, auth.authorizeRole('PM'), pmController.updatePMProfile);
+
+
+// ✅ PM - View Candidate (Protected Route)
+router.get('/pm/view/candidate', auth.authenticateJWT, auth.authorizeRole('PM'), [
+  body('candidateId').notEmpty(),
+  body('role').isIn(['PM', 'Employee', 'TeamLead']) // ✅ Ensure the candidate's role is one of the allowed roles
+], pmController.viewCandidate);
+
+
+// ✅ PM - View All Candidates API (Protected Route)
+router.get('/pm/view/allcandidates', auth.authenticateJWT, auth.authorizeRole('PM'), [
+  body('role').isIn(['PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
+], pmController.viewAllCandidates);
+
+
+/////////////---------------------------------------------------------------------------------///////////////////////////////////////////////
+
+
+////////------------------TeamLead Routes -------------------------------------------------////
+
+// ✅ TeamLead -  own update profile (Protected Route)
+router.put('/teamlead/update/profile', auth.authenticateJWT, auth.authorizeRole('TeamLead'), teamleadController.updateTeamLeadProfile);
+
+// ✅ TeamLead - View Candidate (Protected Route)
+router.get('/teamlead/view/candidate', auth.authenticateJWT, auth.authorizeRole('TeamLead'), [
+  body('candidateId').notEmpty(),
+  body('role').isIn(['TeamLead', 'Employee']) // ✅ Ensure the candidate's role is one of the allowed roles
+], teamleadController.viewCandidate);
+
+
+// ✅ TeamLead - View All Candidates API (Protected Route)
+router.get('/teamlead/view/allcandidates', auth.authenticateJWT, auth.authorizeRole('TeamLead'), [
+  body('role').isIn(['TeamLead', 'Employee']), // ✅ Allowed Roles
+], teamleadController.viewAllCandidates);
+
+
+/////////////---------------------------------------------------------------------------------///////////////////////////////////////////////
+
+
+////////------------------Employee Routes -------------------------------------------------////
+
+// ✅ Employee -  own update profile (Protected Route)
+router.put('/employee/update/profile', auth.authenticateJWT, auth.authorizeRole('Employee'), employeeController.updateEmployeeProfile);
+
+// ✅ Employee - View Candidate (Protected Route)
+router.get('/employee/view/candidate', auth.authenticateJWT, auth.authorizeRole('Employee'), [
+  body('candidateId').notEmpty(),
+  body('role').isIn(['Employee']) // ✅ Ensure the candidate's role is one of the allowed roles
+], employeeController.viewCandidate);
+
+
+// ✅ Employee - View All Candidates API (Protected Route)
+router.get('/employee/view/allcandidates', auth.authenticateJWT, auth.authorizeRole('Employee'), [
+  body('role').isIn(['Employee']), // ✅ Allowed Roles
+], employeeController.viewAllCandidates);
+
+
+
+/////////////---------------------------------------------------------------------------------///////////////////////////////////////////////
 
 
 
