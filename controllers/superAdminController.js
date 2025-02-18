@@ -153,6 +153,40 @@ exports.adminLogin = async (req, res) => {
 
 
 
+// ✅ Update Super Admin Profile
+exports.updateSuperAdminProfile = async (req, res) => {
+  try {
+    const { id } = req.user; // Extracted from JWT
+    const { name, username, dob, mobile, email, residenceAddress } = req.body;
+
+    // 1️⃣ **Check if the logged-in user is a Super Admin with full access**
+    const superAdmin = await SuperAdmin.findOne({ _id: id, access: "full-access", role: "super-admin" });
+
+    if (!superAdmin) {
+      return res.status(403).json({ message: "Unauthorized access" });
+    }
+
+    // 2️⃣ **Update the profile fields if provided**
+    if (name) superAdmin.name = name;
+    if (username) superAdmin.username = username;
+    if (dob) superAdmin.dob = dob;
+    if (mobile) superAdmin.mobile = mobile;
+    if (email) superAdmin.email = email;
+    if (residenceAddress) superAdmin.residenceAddress = residenceAddress;
+
+    await superAdmin.save();
+
+    res.status(200).json({ message: "Super Admin profile updated successfully", data: superAdmin });
+
+  } catch (error) {
+    console.error("❌ Error Updating Super Admin Profile:", error.message);
+    res.status(500).json({ message: "Error updating profile", error: error.message });
+  }
+};
+
+
+
+
 
 
 

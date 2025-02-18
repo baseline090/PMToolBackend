@@ -17,6 +17,43 @@ const roleModelMap = {
 
 
 
+// ✅ Update HR Profile
+exports.updateHRProfile = async (req, res) => {
+  try {
+    const { id } = req.user; // Extracted from JWT
+    const { name, username, dob, mobile, email, residenceAddress } = req.body;
+
+    // 1️⃣ **Check if the logged-in user is HR**
+    const hr = await HR.findOne({ _id: id, role: "HR" });
+
+    if (!hr) {
+      return res.status(403).json({ message: "Unauthorized access" });
+    }
+
+    // 2️⃣ **Update the profile fields if provided**
+    if (name) hr.name = name;
+    if (username) hr.username = username;
+    if (dob) hr.dob = dob;
+    if (mobile) hr.mobile = mobile;
+    if (email) hr.email = email;
+    if (residenceAddress) hr.residenceAddress = residenceAddress;
+
+    await hr.save();
+
+    res.status(200).json({ message: "HR profile updated successfully", data: hr });
+
+  } catch (error) {
+    console.error("❌ Error Updating HR Profile:", error.message);
+    res.status(500).json({ message: "Error updating profile", error: error.message });
+  }
+};
+
+
+
+
+
+
+
 // ✅ HR - Add Candidate API (with Access Control)
 exports.addCandidate = async (req, res) => {
     try {

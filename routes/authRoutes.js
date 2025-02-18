@@ -8,7 +8,7 @@ const superAdminController = require('../controllers/superAdminController');
 
 
 /////---------super admin routes -----------------------------------//////
-
+// ✅ Super Admin Routes
 // ✅ Register Super Admin
 router.post('/register-super-admin', [
   body('email').isEmail(),
@@ -31,16 +31,24 @@ router.post('/admins/login', [
   body('password').notEmpty(),
 ], superAdminController.adminLogin);  // 🔥 Make sure this function is correctly imported
 
+router.put('/super-admin/update/profile', auth.authenticateJWT, auth.authorizeRole('super-admin'), superAdminController.updateSuperAdminProfile);
 
-// ✅ Super Admin Routes
 router.get('/super-admin/view/allcandidate', auth.authenticateJWT, auth.authorizeRole('super-admin'), superAdminController.viewAllCandidates);
+
 router.delete('/super-admin/delete/candidate', auth.authenticateJWT, auth.authorizeRole('super-admin'), superAdminController.deleteCandidate);
+
 router.put('/super-admin/update/allcandidate', auth.authenticateJWT, auth.authorizeRole('super-admin'), superAdminController.updateCandidate);
 
+/////////////////////////////////-----------------------------------------------------------///////////////////////////////////////////////////////////
 
 
 
 ////////------------------HR Routes -------------------------------------------------////
+
+
+
+// ✅ HR -  own update profile (Protected Route)
+router.put('/hr/update/profile', auth.authenticateJWT, auth.authorizeRole('HR'), hrController.updateHRProfile);
 
 
 // ✅ HR - Add Candidate (Protected Route)
@@ -84,6 +92,7 @@ router.put('/hr/update/candidate', auth.authenticateJWT, auth.authorizeRole('HR'
   body('role').isIn(['BDM', 'HM', 'PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
 ], hrController.updateCandidate);
 
+/////////////---------------------------------------------------------------------------------///////////////////////////////////////////////
 
 
 
