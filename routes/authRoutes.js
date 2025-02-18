@@ -33,9 +33,9 @@ router.post('/admins/login', [
 
 
 // ✅ Super Admin Routes
-router.post('/super-admin/view/allcandidate', auth.authenticateJWT, auth.authorizeRole('super-admin'), superAdminController.viewAllCandidates);
-router.post('/super-admin/delete/candidate', auth.authenticateJWT, auth.authorizeRole('super-admin'), superAdminController.deleteCandidate);
-router.post('/super-admin/update/allcandidate', auth.authenticateJWT, auth.authorizeRole('super-admin'), superAdminController.updateCandidate);
+router.get('/super-admin/view/allcandidate', auth.authenticateJWT, auth.authorizeRole('super-admin'), superAdminController.viewAllCandidates);
+router.delete('/super-admin/delete/candidate', auth.authenticateJWT, auth.authorizeRole('super-admin'), superAdminController.deleteCandidate);
+router.put('/super-admin/update/allcandidate', auth.authenticateJWT, auth.authorizeRole('super-admin'), superAdminController.updateCandidate);
 
 
 
