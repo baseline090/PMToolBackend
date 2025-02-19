@@ -1,0 +1,6330 @@
+{
+	"info": {
+		"_postman_id": "89799433-5d65-47f9-bfb3-d8244f27a58a",
+		"name": "PM Tool(Backend)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "38997570"
+	},
+	"item": [
+		{
+			"name": "localhost",
+			"item": [
+				{
+					"name": "Super-Admin",
+					"item": [
+						{
+							"name": "registerSuperAdmin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"username\": \"superadmin123\",\r\n  \"password\": \"SuperAdmin123\",\r\n  \"confirmPassword\": \"SuperAdmin123\",\r\n  \"dob\": \"1990-05-15\",\r\n  \"mobile\": \"98765432123\",\r\n  \"email\": \"superadminpmtool@yopmail.com\",\r\n  \"residenceAddress\": \"123 Street, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/register-super-admin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"register-super-admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/forgotpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\",\r\n  \"otp\": \"4183\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/verifyotp",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "superAdminLogin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"superadmin123\",\r\n  \"password\": \"sadmin12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/admins/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVmNTgyYzE2MzU5ZTM1YmJjYzg3YSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTczOTkzOTc4MiwiZXhwIjoxNzQwMDI2MTgyfQ.W9gxa6qG_Jt2o5yo5mpEq-2WY7SV31BMc8MS-XaEZ7E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Updated SuperAdmin\",\r\n  \"dob\": \"1990-05-15\",\r\n  \"email\": \"superadminpmtool@yopmail.com\",\r\n  \"residenceAddress\": \"New Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/super-admin/update/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"super-admin",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddSubAdmin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVmNTgyYzE2MzU5ZTM1YmJjYzg3YSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTczOTkzOTc4MiwiZXhwIjoxNzQwMDI2MTgyfQ.W9gxa6qG_Jt2o5yo5mpEq-2WY7SV31BMc8MS-XaEZ7E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Jane Doe\",\r\n  \"username\": \"subadmin1234567\",\r\n  \"password\": \"123456\",\r\n  \"confirmPassword\": \"123456\",\r\n  \"dob\": \"1995-07-20\",\r\n  \"mobile\": \"9874563217\",\r\n  \"email\": \"teamleadpmtool@yopmail.com\",\r\n  \"residenceAddress\": \"456 Street, City, Country\",\r\n  \"role\": \"TeamLead\",\r\n  \"permissions\": [\"dashboard\", \"employee\", \"nepower\"]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/register-admin-subadmin",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"register-admin-subadmin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_All_Candidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVmNTgyYzE2MzU5ZTM1YmJjYzg3YSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTczOTg0ODY2NywiZXhwIjoxNzM5OTM1MDY3fQ.d7aryCAlWTNIkTf7E7oHXc-hAwOYnE6xJdUXeIz4dBg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"BDM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/super-admin/view/allcandidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"super-admin",
+										"view",
+										"allcandidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete_Candidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVmNTgyYzE2MzU5ZTM1YmJjYzg3YSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTczOTg0ODY2NywiZXhwIjoxNzM5OTM1MDY3fQ.d7aryCAlWTNIkTf7E7oHXc-hAwOYnE6xJdUXeIz4dBg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b3fcffb66692cfd703cc75\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/super-admin/delete/candidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"super-admin",
+										"delete",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Candidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVmNTgyYzE2MzU5ZTM1YmJjYzg3YSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTczOTg1MjQ1NSwiZXhwIjoxNzM5OTM4ODU1fQ.UpPHKBzmYI4Pu6UZGCY3z_d5rWUL-C9H0lpr_zFrhSU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b3fe2ab66692cfd703cc91\",\r\n  \"updateData\": {\r\n    \"name\": \"Updated Candidate Name\",\r\n    \"email\": \"newemailupdated@example.com\"\r\n  },\r\n  \"role\": \"HR\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/super-admin/update/allcandidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"super-admin",
+										"update",
+										"allcandidate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "HR",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin\",\r\n  \"password\": \"hr12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/admins/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/forgotpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\",\r\n  \"otp\": \"4183\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/verifyotp",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cGVyYWRtaW5wbXRvb2xAeW9wbWFpbC5jb20iLCJpYXQiOjE3Mzk5NDg0OTIsImV4cCI6MTczOTk0OTA5Mn0.Hp74QBmA33qGVRAOT-qD5sly6oH5zHua9Chwsx-fovo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"teamlead12345\",\r\n  \"confirmPassword\": \"teamlead12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/resetpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZTJhYjY2NjkyY2ZkNzAzY2M5MSIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk4NTM1ODQsImV4cCI6MTczOTkzOTk4NH0.EknK-fMhTk_apxGmlAJ7qq83S1IjKoegFxNiu9LwaIA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New HR Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/hr/update/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"hr",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddCandidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk4NTc3MDUsImV4cCI6MTczOTk0NDEwNX0.mPAMs1JGBERLLB9ICEfi9tlp0p70fil06IgdoIYK2ug",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"username\": \"john_doe1234\",\r\n  \"password\": \"securePass123\",\r\n  \"confirmPassword\": \"securePass123\",\r\n  \"dob\": \"1995-06-15\",\r\n  \"mobile\": \"987654321124\",\r\n  \"email\": \"john.doe134@example.com\",\r\n  \"residenceAddress\": \"123 Street, City, Country\",\r\n  \"role\": \"BDM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/hr/add/candidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"hr",
+										"add",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3NzUyMjUsImV4cCI6MTczOTg2MTYyNX0.2OA9K0i4MSNQeH6Q8xdjMw5wdnjIdhGKLmfCto4PkZQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67adb5db8fcf808e3ab63d02\",\r\n  \"role\": \"BDM\"  // Role of the candidate being deleted\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/hr/delete/candidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"hr",
+										"delete",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67af0e4d8b6b80d9b4a737a8\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/hr/view/candidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"hr",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateCandidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67aefeb50d10e73a0eb46e8a\",\r\n  \"updatedFields\": {\r\n    \"name\": \"Jane Doe2\",\r\n    \"email\": \"usubadmin1234@example.com\",\r\n    \"mobile\": \"1234567890\"\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/hr/update/candidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"hr",
+										"update",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"BDM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/hr/view/allcandidates",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"hr",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "BDM",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"john_doe1234\",\r\n  \"password\": \"securePass123\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/admins/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/forgotpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\",\r\n  \"otp\": \"4183\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/verifyotp",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cGVyYWRtaW5wbXRvb2xAeW9wbWFpbC5jb20iLCJpYXQiOjE3Mzk5NDg0OTIsImV4cCI6MTczOTk0OTA5Mn0.Hp74QBmA33qGVRAOT-qD5sly6oH5zHua9Chwsx-fovo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"teamlead12345\",\r\n  \"confirmPassword\": \"teamlead12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/resetpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New BDM Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/bdm/update/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"bdm",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddCandidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"username\": \"john_doe1234567\",\r\n  \"password\": \"securePass123\",\r\n  \"confirmPassword\": \"securePass123\",\r\n  \"dob\": \"1995-06-15\",\r\n  \"mobile\": \"9876543\",\r\n  \"email\": \"john.doe134567@example.com\",\r\n  \"residenceAddress\": \"123 Street, City, Country\",\r\n  \"role\": \"TeamLead\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/bdm/add/candidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"bdm",
+										"add",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b426768a6800a9a07278bc\",\r\n  \"role\": \"TeamLead\"  // Role of the candidate being deleted\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/bdm/delete/candidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"bdm",
+										"delete",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b426768a6800a9a07278bc\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/bdm/view/candidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"bdm",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateCandidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b4273b8a6800a9a07278eb\",\r\n  \"updatedFields\": {\r\n    \"name\": \"Jane Doe2\",\r\n    \"email\": \"usubadmin1234@example.com\",\r\n    \"mobile\": \"1234567890\"\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/bdm/update/candidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"bdm",
+										"update",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"HM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/bdm/view/allcandidates",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"bdm",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "HM",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin\",\r\n  \"password\": \"hr12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/admins/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/forgotpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\",\r\n  \"otp\": \"4183\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/verifyotp",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cGVyYWRtaW5wbXRvb2xAeW9wbWFpbC5jb20iLCJpYXQiOjE3Mzk5NDg0OTIsImV4cCI6MTczOTk0OTA5Mn0.Hp74QBmA33qGVRAOT-qD5sly6oH5zHua9Chwsx-fovo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"teamlead12345\",\r\n  \"confirmPassword\": \"teamlead12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/resetpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZTJhYjY2NjkyY2ZkNzAzY2M5MSIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk4NTM1ODQsImV4cCI6MTczOTkzOTk4NH0.EknK-fMhTk_apxGmlAJ7qq83S1IjKoegFxNiu9LwaIA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New HR Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/hm/update/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"hm",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67af0e4d8b6b80d9b4a737a8\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/hm/view/candidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"hm",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"BDM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/hm/view/allcandidates",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"hm",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PM",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"john_doe1234\",\r\n  \"password\": \"securePass123\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/admins/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/forgotpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\",\r\n  \"otp\": \"4183\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/verifyotp",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cGVyYWRtaW5wbXRvb2xAeW9wbWFpbC5jb20iLCJpYXQiOjE3Mzk5NDg0OTIsImV4cCI6MTczOTk0OTA5Mn0.Hp74QBmA33qGVRAOT-qD5sly6oH5zHua9Chwsx-fovo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"teamlead12345\",\r\n  \"confirmPassword\": \"teamlead12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/resetpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New BDM Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/pm/update/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"pm",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b426768a6800a9a07278bc\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/pm/view/candidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"pm",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"HM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/pm/view/allcandidates",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"pm",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TeamLead",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin1\",\r\n  \"password\": \"SubAdmin123\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/admins/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/forgotpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\",\r\n  \"otp\": \"4183\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/verifyotp",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cGVyYWRtaW5wbXRvb2xAeW9wbWFpbC5jb20iLCJpYXQiOjE3Mzk5NDg0OTIsImV4cCI6MTczOTk0OTA5Mn0.Hp74QBmA33qGVRAOT-qD5sly6oH5zHua9Chwsx-fovo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"teamlead12345\",\r\n  \"confirmPassword\": \"teamlead12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/resetpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjJlYzI1MzZkYmY3MzU1ODJhNDk0MiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk4NTQyNzIsImV4cCI6MTczOTk0MDY3Mn0.Ezs2gOZNogPCupK3qSqizA6N3qNsiLgc3kp_LPbllyQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New HR Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/teamlead/update/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"teamlead",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67af0e4d8b6b80d9b4a737a8\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/teamlead/view/candidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"teamlead",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"HM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/teamlead/view/allcandidates",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"teamlead",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Employee",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"john_doe123\",\r\n  \"password\": \"securePass123\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pmtoolbackend.onrender.com/api/admins/login",
+									"protocol": "https",
+									"host": [
+										"pmtoolbackend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/forgotpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\",\r\n  \"otp\": \"4183\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/verifyotp",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cGVyYWRtaW5wbXRvb2xAeW9wbWFpbC5jb20iLCJpYXQiOjE3Mzk5NDg0OTIsImV4cCI6MTczOTk0OTA5Mn0.Hp74QBmA33qGVRAOT-qD5sly6oH5zHua9Chwsx-fovo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"teamlead12345\",\r\n  \"confirmPassword\": \"teamlead12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/resetpassword",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"HM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/employee/view/allcandidates",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"employee",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New BDM Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/employee/update/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"employee",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b426768a6800a9a07278bc\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/employee/view/candidate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"employee",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "liveRender",
+			"item": [
+				{
+					"name": "Super-Admin",
+					"item": [
+						{
+							"name": "registerSuperAdmin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"username\": \"superadmin123\",\r\n  \"password\": \"SuperAdmin123\",\r\n  \"confirmPassword\": \"SuperAdmin123\",\r\n  \"dob\": \"1990-05-15\",\r\n  \"mobile\": \"98765432123\",\r\n  \"email\": \"superadminpmtool@yopmail.com\",\r\n  \"residenceAddress\": \"123 Street, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pmtoolbackend.onrender.com/api/register-super-admin",
+									"protocol": "https",
+									"host": [
+										"pmtoolbackend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"register-super-admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "superAdminLogin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"superadmin\",\r\n  \"password\": \"sadmin12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/admins/login",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"superadminpmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/forgotpassword",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"superadminpmtool@yopmail.com\",\r\n  \"otp\": \"9254\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/verifyotp",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cGVyYWRtaW5wbXRvb2xAeW9wbWFpbC5jb20iLCJpYXQiOjE3Mzk5NjE4MjgsImV4cCI6MTczOTk2MjQyOH0.OcLzYC4H1Sp7uemWGWu3HcmJGWlBOmHj6qN0hWzltpQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"sadmin12345\",\r\n  \"confirmPassword\": \"sadmin12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/resetpassword",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Updated SuperAdmin\",\r\n  \"dob\": \"1990-05-15\",\r\n  \"email\": \"superadminpmtool@yopmail.com\",\r\n  \"residenceAddress\": \"New Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/super-admin/update/profile",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"super-admin",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddSubAdmin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVmNTgyYzE2MzU5ZTM1YmJjYzg3YSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTczOTkzOTc4MiwiZXhwIjoxNzQwMDI2MTgyfQ.W9gxa6qG_Jt2o5yo5mpEq-2WY7SV31BMc8MS-XaEZ7E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Jane Doe\",\r\n  \"username\": \"subadmin1234567\",\r\n  \"password\": \"123456\",\r\n  \"confirmPassword\": \"123456\",\r\n  \"dob\": \"1995-07-20\",\r\n  \"mobile\": \"9874563217\",\r\n  \"email\": \"teamleadpmtool@yopmail.com\",\r\n  \"residenceAddress\": \"456 Street, City, Country\",\r\n  \"role\": \"TeamLead\",\r\n  \"permissions\": [\"dashboard\", \"employee\", \"nepower\"]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/register-admin-subadmin",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"register-admin-subadmin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_All_Candidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVmNTgyYzE2MzU5ZTM1YmJjYzg3YSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTczOTg0ODY2NywiZXhwIjoxNzM5OTM1MDY3fQ.d7aryCAlWTNIkTf7E7oHXc-hAwOYnE6xJdUXeIz4dBg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"BDM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/super-admin/view/allcandidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"super-admin",
+										"view",
+										"allcandidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete_Candidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVmNTgyYzE2MzU5ZTM1YmJjYzg3YSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTczOTg0ODY2NywiZXhwIjoxNzM5OTM1MDY3fQ.d7aryCAlWTNIkTf7E7oHXc-hAwOYnE6xJdUXeIz4dBg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b3fcffb66692cfd703cc75\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/super-admin/delete/candidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"super-admin",
+										"delete",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Candidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVmNTgyYzE2MzU5ZTM1YmJjYzg3YSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTczOTg1MjQ1NSwiZXhwIjoxNzM5OTM4ODU1fQ.UpPHKBzmYI4Pu6UZGCY3z_d5rWUL-C9H0lpr_zFrhSU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b3fe2ab66692cfd703cc91\",\r\n  \"updateData\": {\r\n    \"name\": \"Updated Candidate Name\",\r\n    \"email\": \"newemailupdated@example.com\"\r\n  },\r\n  \"role\": \"HR\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/super-admin/update/allcandidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"super-admin",
+										"update",
+										"allcandidate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "HR",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin\",\r\n  \"password\": \"hr12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pmtoolbackend.onrender.com/api/admins/login",
+									"protocol": "https",
+									"host": [
+										"pmtoolbackend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"hrpmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/forgotpassword",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"hrpmtool@yopmail.com\",\r\n  \"otp\": \"9333\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/verifyotp",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhycG10b29sQHlvcG1haWwuY29tIiwiaWF0IjoxNzM5OTYxNDc1LCJleHAiOjE3Mzk5NjIwNzV9.zIVymHNS572ZMKKe-78hintUhvWPUBuYFHpG-RKPBQE",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"hr12345\",\r\n  \"confirmPassword\": \"hr12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}api/resetpassword",
+									"host": [
+										"{{render}}api"
+									],
+									"path": [
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZTJhYjY2NjkyY2ZkNzAzY2M5MSIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk4NTM1ODQsImV4cCI6MTczOTkzOTk4NH0.EknK-fMhTk_apxGmlAJ7qq83S1IjKoegFxNiu9LwaIA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New HR Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/hr/update/profile",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"hr",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddCandidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk4NTc3MDUsImV4cCI6MTczOTk0NDEwNX0.mPAMs1JGBERLLB9ICEfi9tlp0p70fil06IgdoIYK2ug",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"username\": \"john_doe1234\",\r\n  \"password\": \"securePass123\",\r\n  \"confirmPassword\": \"securePass123\",\r\n  \"dob\": \"1995-06-15\",\r\n  \"mobile\": \"987654321124\",\r\n  \"email\": \"john.doe134@example.com\",\r\n  \"residenceAddress\": \"123 Street, City, Country\",\r\n  \"role\": \"BDM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/hr/add/candidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"hr",
+										"add",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3NzUyMjUsImV4cCI6MTczOTg2MTYyNX0.2OA9K0i4MSNQeH6Q8xdjMw5wdnjIdhGKLmfCto4PkZQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67adb5db8fcf808e3ab63d02\",\r\n  \"role\": \"BDM\"  // Role of the candidate being deleted\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/hr/delete/candidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"hr",
+										"delete",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67af0e4d8b6b80d9b4a737a8\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/hr/view/candidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"hr",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateCandidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67aefeb50d10e73a0eb46e8a\",\r\n  \"updatedFields\": {\r\n    \"name\": \"Jane Doe2\",\r\n    \"email\": \"usubadmin1234@example.com\",\r\n    \"mobile\": \"1234567890\"\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/hr/update/candidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"hr",
+										"update",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"BDM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/hr/view/allcandidates",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"hr",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "BDM",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin3\",\r\n  \"password\": \"bdm12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pmtoolbackend.onrender.com/api/admins/login",
+									"protocol": "https",
+									"host": [
+										"pmtoolbackend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"bdmpmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/forgotpassword",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"bdmpmtool@yopmail.com\",\r\n  \"otp\": \"5100\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/verifyotp",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImJkbXBtdG9vbEB5b3BtYWlsLmNvbSIsImlhdCI6MTczOTk2MDgwNiwiZXhwIjoxNzM5OTYxNDA2fQ.AO32CT8gAkv0L_34NhEMHS8kcxcdXNKvKk7Vd1twXB4",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"bdm12345\",\r\n  \"confirmPassword\": \"bdm12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/resetpassword",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New BDM Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/bdm/update/profile",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"bdm",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddCandidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"username\": \"john_doe1234567\",\r\n  \"password\": \"securePass123\",\r\n  \"confirmPassword\": \"securePass123\",\r\n  \"dob\": \"1995-06-15\",\r\n  \"mobile\": \"9876543\",\r\n  \"email\": \"john.doe134567@example.com\",\r\n  \"residenceAddress\": \"123 Street, City, Country\",\r\n  \"role\": \"TeamLead\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/bdm/add/candidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"bdm",
+										"add",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b426768a6800a9a07278bc\",\r\n  \"role\": \"TeamLead\"  // Role of the candidate being deleted\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/bdm/delete/candidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"bdm",
+										"delete",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b426768a6800a9a07278bc\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/bdm/view/candidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"bdm",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateCandidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b4273b8a6800a9a07278eb\",\r\n  \"updatedFields\": {\r\n    \"name\": \"Jane Doe2\",\r\n    \"email\": \"usubadmin1234@example.com\",\r\n    \"mobile\": \"1234567890\"\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/bdm/update/candidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"bdm",
+										"update",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"HM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/bdm/view/allcandidates",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"bdm",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "HM",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin2\",\r\n  \"password\": \"hm12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pmtoolbackend.onrender.com/api/admins/login",
+									"protocol": "https",
+									"host": [
+										"pmtoolbackend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"hmpmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/forgotpassword",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"hmpmtool@yopmail.com\",\r\n  \"otp\": \"8376\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/verifyotp",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImhtcG10b29sQHlvcG1haWwuY29tIiwiaWF0IjoxNzM5OTYwNjMyLCJleHAiOjE3Mzk5NjEyMzJ9.EjrFmwh4Wa-axQN9V3YwQfJTf0txbbGusagoO25qM3k",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"hm12345\",\r\n  \"confirmPassword\": \"hm12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/resetpassword",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZTJhYjY2NjkyY2ZkNzAzY2M5MSIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk4NTM1ODQsImV4cCI6MTczOTkzOTk4NH0.EknK-fMhTk_apxGmlAJ7qq83S1IjKoegFxNiu9LwaIA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New HR Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/hm/update/profile",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"hm",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67af0e4d8b6b80d9b4a737a8\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/hm/view/candidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"hm",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"BDM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/hm/view/allcandidates",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"hm",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PM",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin4\",\r\n  \"password\": \"pm12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pmtoolbackend.onrender.com/api/admins/login",
+									"protocol": "https",
+									"host": [
+										"pmtoolbackend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"pmpmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/forgotpassword",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"pmpmtool@yopmail.com\",\r\n  \"otp\": \"2076\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/verifyotp",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InBtcG10b29sQHlvcG1haWwuY29tIiwiaWF0IjoxNzM5OTYwMzEwLCJleHAiOjE3Mzk5NjA5MTB9.0_D6NOQDcm8myRliLm_R4zHSV9_AbWZuQsw4QVNSfBY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"pm12345\",\r\n  \"confirmPassword\": \"pm12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/resetpassword",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New BDM Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/pm/update/profile",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"pm",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b426768a6800a9a07278bc\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/pm/view/candidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"pm",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"HM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/pm/view/allcandidates",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"pm",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TeamLead",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin6\",\r\n  \"password\": \"teamlead12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pmtoolbackend.onrender.com/api/admins/login",
+									"protocol": "https",
+									"host": [
+										"pmtoolbackend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/forgotpassword",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\",\r\n  \"otp\": \"4183\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/verifyotp",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cGVyYWRtaW5wbXRvb2xAeW9wbWFpbC5jb20iLCJpYXQiOjE3Mzk5NDg0OTIsImV4cCI6MTczOTk0OTA5Mn0.Hp74QBmA33qGVRAOT-qD5sly6oH5zHua9Chwsx-fovo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"teamlead12345\",\r\n  \"confirmPassword\": \"teamlead12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/resetpassword",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjJlYzI1MzZkYmY3MzU1ODJhNDk0MiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk4NTQyNzIsImV4cCI6MTczOTk0MDY3Mn0.Ezs2gOZNogPCupK3qSqizA6N3qNsiLgc3kp_LPbllyQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New HR Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/teamlead/update/profile",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"teamlead",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67af0e4d8b6b80d9b4a737a8\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/teamlead/view/candidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"teamlead",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"HM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/teamlead/view/allcandidates",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"teamlead",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Employee",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin5\",\r\n  \"password\": \"employee12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pmtoolbackend.onrender.com/api/admins/login",
+									"protocol": "https",
+									"host": [
+										"pmtoolbackend",
+										"onrender",
+										"com"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/forgotpassword",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\",\r\n  \"otp\": \"4183\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/verifyotp",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cGVyYWRtaW5wbXRvb2xAeW9wbWFpbC5jb20iLCJpYXQiOjE3Mzk5NDg0OTIsImV4cCI6MTczOTk0OTA5Mn0.Hp74QBmA33qGVRAOT-qD5sly6oH5zHua9Chwsx-fovo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"teamlead12345\",\r\n  \"confirmPassword\": \"teamlead12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/resetpassword",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"HM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/employee/view/allcandidates",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"employee",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New BDM Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/employee/update/profile",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"employee",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b426768a6800a9a07278bc\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/employee/view/candidate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"employee",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "liveVercel",
+			"item": [
+				{
+					"name": "Super-Admin",
+					"item": [
+						{
+							"name": "registerSuperAdmin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"username\": \"superadmin123\",\r\n  \"password\": \"SuperAdmin123\",\r\n  \"confirmPassword\": \"SuperAdmin123\",\r\n  \"dob\": \"1990-05-15\",\r\n  \"mobile\": \"98765432123\",\r\n  \"email\": \"superadminpmtool@yopmail.com\",\r\n  \"residenceAddress\": \"123 Street, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pm-tool-backend.vercel.app/api/register-super-admin",
+									"protocol": "https",
+									"host": [
+										"pm-tool-backend",
+										"vercel",
+										"app"
+									],
+									"path": [
+										"api",
+										"register-super-admin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "superAdminLogin",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"superadmin\",\r\n  \"password\": \"sadmin12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/admins/login",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"superadminpmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/forgotpassword",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"superadminpmtool@yopmail.com\",\r\n  \"otp\": \"9254\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/verifyotp",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Profile",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVmNTgyYzE2MzU5ZTM1YmJjYzg3YSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTczOTkzOTc4MiwiZXhwIjoxNzQwMDI2MTgyfQ.W9gxa6qG_Jt2o5yo5mpEq-2WY7SV31BMc8MS-XaEZ7E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Updated SuperAdmin\",\r\n  \"dob\": \"1990-05-15\",\r\n  \"email\": \"superadminpmtool@yopmail.com\",\r\n  \"residenceAddress\": \"New Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/super-admin/update/profile",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"super-admin",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddSubAdmin",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVmNTgyYzE2MzU5ZTM1YmJjYzg3YSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTczOTkzOTc4MiwiZXhwIjoxNzQwMDI2MTgyfQ.W9gxa6qG_Jt2o5yo5mpEq-2WY7SV31BMc8MS-XaEZ7E",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Jane Doe\",\r\n  \"username\": \"subadmin1234567\",\r\n  \"password\": \"123456\",\r\n  \"confirmPassword\": \"123456\",\r\n  \"dob\": \"1995-07-20\",\r\n  \"mobile\": \"9874563217\",\r\n  \"email\": \"teamleadpmtool@yopmail.com\",\r\n  \"residenceAddress\": \"456 Street, City, Country\",\r\n  \"role\": \"TeamLead\",\r\n  \"permissions\": [\"dashboard\", \"employee\", \"nepower\"]\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/register-admin-subadmin",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"register-admin-subadmin"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_All_Candidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVmNTgyYzE2MzU5ZTM1YmJjYzg3YSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTczOTg0ODY2NywiZXhwIjoxNzM5OTM1MDY3fQ.d7aryCAlWTNIkTf7E7oHXc-hAwOYnE6xJdUXeIz4dBg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"BDM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/super-admin/view/allcandidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"super-admin",
+										"view",
+										"allcandidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete_Candidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVmNTgyYzE2MzU5ZTM1YmJjYzg3YSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTczOTg0ODY2NywiZXhwIjoxNzM5OTM1MDY3fQ.d7aryCAlWTNIkTf7E7oHXc-hAwOYnE6xJdUXeIz4dBg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b3fcffb66692cfd703cc75\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/super-admin/delete/candidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"super-admin",
+										"delete",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Candidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWVmNTgyYzE2MzU5ZTM1YmJjYzg3YSIsInJvbGUiOiJzdXBlci1hZG1pbiIsImlhdCI6MTczOTg1MjQ1NSwiZXhwIjoxNzM5OTM4ODU1fQ.UpPHKBzmYI4Pu6UZGCY3z_d5rWUL-C9H0lpr_zFrhSU",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b3fe2ab66692cfd703cc91\",\r\n  \"updateData\": {\r\n    \"name\": \"Updated Candidate Name\",\r\n    \"email\": \"newemailupdated@example.com\"\r\n  },\r\n  \"role\": \"HR\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/super-admin/update/allcandidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"super-admin",
+										"update",
+										"allcandidate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "HR",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin\",\r\n  \"password\": \"hr12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pm-tool-backend.vercel.app/api/admins/login",
+									"protocol": "https",
+									"host": [
+										"pm-tool-backend",
+										"vercel",
+										"app"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"hrpmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/forgotpassword",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"hrpmtool@yopmail.com\",\r\n  \"otp\": \"9333\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/verifyotp",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cGVyYWRtaW5wbXRvb2xAeW9wbWFpbC5jb20iLCJpYXQiOjE3Mzk5NDg0OTIsImV4cCI6MTczOTk0OTA5Mn0.Hp74QBmA33qGVRAOT-qD5sly6oH5zHua9Chwsx-fovo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"teamlead12345\",\r\n  \"confirmPassword\": \"teamlead12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/resetpassword",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZTJhYjY2NjkyY2ZkNzAzY2M5MSIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk4NTM1ODQsImV4cCI6MTczOTkzOTk4NH0.EknK-fMhTk_apxGmlAJ7qq83S1IjKoegFxNiu9LwaIA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New HR Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/hr/update/profile",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"hr",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddCandidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk4NTc3MDUsImV4cCI6MTczOTk0NDEwNX0.mPAMs1JGBERLLB9ICEfi9tlp0p70fil06IgdoIYK2ug",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"username\": \"john_doe1234\",\r\n  \"password\": \"securePass123\",\r\n  \"confirmPassword\": \"securePass123\",\r\n  \"dob\": \"1995-06-15\",\r\n  \"mobile\": \"987654321124\",\r\n  \"email\": \"john.doe134@example.com\",\r\n  \"residenceAddress\": \"123 Street, City, Country\",\r\n  \"role\": \"BDM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/hr/add/candidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"hr",
+										"add",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3NzUyMjUsImV4cCI6MTczOTg2MTYyNX0.2OA9K0i4MSNQeH6Q8xdjMw5wdnjIdhGKLmfCto4PkZQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67adb5db8fcf808e3ab63d02\",\r\n  \"role\": \"BDM\"  // Role of the candidate being deleted\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/hr/delete/candidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"hr",
+										"delete",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67af0e4d8b6b80d9b4a737a8\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/hr/view/candidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"hr",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateCandidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67aefeb50d10e73a0eb46e8a\",\r\n  \"updatedFields\": {\r\n    \"name\": \"Jane Doe2\",\r\n    \"email\": \"usubadmin1234@example.com\",\r\n    \"mobile\": \"1234567890\"\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/hr/update/candidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"hr",
+										"update",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"BDM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/hr/view/allcandidates",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"hr",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "BDM",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin3\",\r\n  \"password\": \"bdm12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pm-tool-backend.vercel.app/api/admins/login",
+									"protocol": "https",
+									"host": [
+										"pm-tool-backend",
+										"vercel",
+										"app"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"bdmpmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/forgotpassword",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"bdmpmtool@yopmail.com\",\r\n  \"otp\": \"5100\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/verifyotp",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cGVyYWRtaW5wbXRvb2xAeW9wbWFpbC5jb20iLCJpYXQiOjE3Mzk5NDg0OTIsImV4cCI6MTczOTk0OTA5Mn0.Hp74QBmA33qGVRAOT-qD5sly6oH5zHua9Chwsx-fovo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"teamlead12345\",\r\n  \"confirmPassword\": \"teamlead12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/resetpassword",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New BDM Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/bdm/update/profile",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"bdm",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "AddCandidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"username\": \"john_doe1234567\",\r\n  \"password\": \"securePass123\",\r\n  \"confirmPassword\": \"securePass123\",\r\n  \"dob\": \"1995-06-15\",\r\n  \"mobile\": \"9876543\",\r\n  \"email\": \"john.doe134567@example.com\",\r\n  \"residenceAddress\": \"123 Street, City, Country\",\r\n  \"role\": \"TeamLead\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/bdm/add/candidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"bdm",
+										"add",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Delete",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b426768a6800a9a07278bc\",\r\n  \"role\": \"TeamLead\"  // Role of the candidate being deleted\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/bdm/delete/candidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"bdm",
+										"delete",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b426768a6800a9a07278bc\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/bdm/view/candidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"bdm",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UpdateCandidate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b4273b8a6800a9a07278eb\",\r\n  \"updatedFields\": {\r\n    \"name\": \"Jane Doe2\",\r\n    \"email\": \"usubadmin1234@example.com\",\r\n    \"mobile\": \"1234567890\"\r\n  }\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/bdm/update/candidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"bdm",
+										"update",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"HM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/bdm/view/allcandidates",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"bdm",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "HM",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin2\",\r\n  \"password\": \"hm12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pm-tool-backend.vercel.app/api/admins/login",
+									"protocol": "https",
+									"host": [
+										"pm-tool-backend",
+										"vercel",
+										"app"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"hmpmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/forgotpassword",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"hmpmtool@yopmail.com\",\r\n  \"otp\": \"8376\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/verifyotp",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cGVyYWRtaW5wbXRvb2xAeW9wbWFpbC5jb20iLCJpYXQiOjE3Mzk5NDg0OTIsImV4cCI6MTczOTk0OTA5Mn0.Hp74QBmA33qGVRAOT-qD5sly6oH5zHua9Chwsx-fovo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"hm12345\",\r\n  \"confirmPassword\": \"hm12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/resetpassword",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjNmZTJhYjY2NjkyY2ZkNzAzY2M5MSIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk4NTM1ODQsImV4cCI6MTczOTkzOTk4NH0.EknK-fMhTk_apxGmlAJ7qq83S1IjKoegFxNiu9LwaIA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New HR Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/hm/update/profile",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"hm",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67af0e4d8b6b80d9b4a737a8\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/hm/view/candidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"hm",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"BDM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/hm/view/allcandidates",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"hm",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "PM",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin4\",\r\n  \"password\": \"pm12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pm-tool-backend.vercel.app/api/admins/login",
+									"protocol": "https",
+									"host": [
+										"pm-tool-backend",
+										"vercel",
+										"app"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"pmpmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/forgotpassword",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"pmpmtool@yopmail.com\",\r\n  \"otp\": \"4183\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/verifyotp",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InN1cGVyYWRtaW5wbXRvb2xAeW9wbWFpbC5jb20iLCJpYXQiOjE3Mzk5NDg0OTIsImV4cCI6MTczOTk0OTA5Mn0.Hp74QBmA33qGVRAOT-qD5sly6oH5zHua9Chwsx-fovo",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"pm12345\",\r\n  \"confirmPassword\": \"pm12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/resetpassword",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New BDM Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/pm/update/profile",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"pm",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b426768a6800a9a07278bc\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/pm/view/candidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"pm",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjQyNTE5OGE2ODAwYTlhMDcyNzg5OSIsInJvbGUiOiJCRE0iLCJwZXJtaXNzaW9ucyI6W10sImlhdCI6MTczOTg1OTI1OCwiZXhwIjoxNzM5OTQ1NjU4fQ.leKj_aEhOREnVjqEPtbDRsEV_V5SrzkXp2EmS6keJTA",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"HM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/pm/view/allcandidates",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"pm",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "TeamLead",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin6\",\r\n  \"password\": \"teamlead12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pm-tool-backend.vercel.app/api/admins/login",
+									"protocol": "https",
+									"host": [
+										"pm-tool-backend",
+										"vercel",
+										"app"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"teamleadpmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/forgotpassword",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"teamleadpmtool@yopmail.com\",\r\n  \"otp\": \"9823\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/verifyotp",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InRlYW1sZWFkcG10b29sQHlvcG1haWwuY29tIiwiaWF0IjoxNzM5OTU4OTcwLCJleHAiOjE3Mzk5NTk1NzB9.wx6OFwL_sQnVB7zWfnlI1NaNZDZRzAMdN5YUoDzeuzY",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"teamlead12345\",\r\n  \"confirmPassword\": \"teamlead12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/resetpassword",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjJlYzI1MzZkYmY3MzU1ODJhNDk0MiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk4NTQyNzIsImV4cCI6MTczOTk0MDY3Mn0.Ezs2gOZNogPCupK3qSqizA6N3qNsiLgc3kp_LPbllyQ",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"New HR Name\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/teamlead/update/profile",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"teamlead",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67af0e4d8b6b80d9b4a737a8\"  // ID of the candidate you want to view\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/teamlead/view/candidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"teamlead",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YWYyNTYyYWRkOTAwY2RlZDRiYmQ3ZiIsInJvbGUiOiJIUiIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk3ODY2NDYsImV4cCI6MTczOTg3MzA0Nn0.lHPeLnaM2gljsBcADu5B_PR9R5q4Z1wz2zfbLTXVHGg",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"HM\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/teamlead/view/allcandidates",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"teamlead",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Employee",
+					"item": [
+						{
+							"name": "Login",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"username\": \"subadmin5\",\r\n  \"password\": \"employee12345\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://pm-tool-backend.vercel.app/api/admins/login",
+									"protocol": "https",
+									"host": [
+										"pm-tool-backend",
+										"vercel",
+										"app"
+									],
+									"path": [
+										"api",
+										"admins",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ForgotPassword",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/forgotpassword",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"forgotpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserVerifyotp",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"email\": \"employeepmtool@yopmail.com\",\r\n  \"otp\": \"4148\"  // Replace with the actual OTP sent to the email\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/verifyotp",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"verifyotp"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UserRestPassword",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImVtcGxveWVlcG10b29sQHlvcG1haWwuY29tIiwiaWF0IjoxNzM5OTU4NTgyLCJleHAiOjE3Mzk5NTkxODJ9.KTck0sNLke0Aeb93p7irs3pcDBbYD-5EkbSXZI52ic8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"newPassword\": \"employee12345\",\r\n  \"confirmPassword\": \"employee12345\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/resetpassword",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"resetpassword"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "View_Colction_all_users",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU5NTM1M2E3NDM1OTc0YzUxZTNjNSIsInJvbGUiOiJFbXBsb3llZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk5NTg2NTksImV4cCI6MTc0MDA0NTA1OX0.HRJnqD7XdLuzcW9bjLscWhLSQI3auYeR_8kFlmH2bB8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"role\": \"Employee\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/employee/view/allcandidates",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"employee",
+										"view",
+										"allcandidates"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Proflie",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU5NTM1M2E3NDM1OTc0YzUxZTNjNSIsInJvbGUiOiJFbXBsb3llZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk5NTg2NTksImV4cCI6MTc0MDA0NTA1OX0.HRJnqD7XdLuzcW9bjLscWhLSQI3auYeR_8kFlmH2bB8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Employee1\",\r\n  \"dob\": \"1992-08-10\",\r\n  \"residenceAddress\": \"New HR Address, City, Country\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/employee/update/profile",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"employee",
+										"update",
+										"profile"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ViewCandidate",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU5NTM1M2E3NDM1OTc0YzUxZTNjNSIsInJvbGUiOiJFbXBsb3llZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3Mzk5NTg2NTksImV4cCI6MTc0MDA0NTA1OX0.HRJnqD7XdLuzcW9bjLscWhLSQI3auYeR_8kFlmH2bB8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67b595353a7435974c51e3c5\"  // ID of the candidate you want to view  only employe role can se\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/employee/view/candidate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"employee",
+										"view",
+										"candidate"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "vercel",
+			"value": "https://pm-tool-backend.vercel.app",
+			"type": "string"
+		},
+		{
+			"key": "render",
+			"value": "https://pmtoolbackend.onrender.com",
+			"type": "string"
+		}
+	]
+}
