@@ -140,7 +140,9 @@ exports.adminLogin = async (req, res) => {
         id: user._id,
         name: user.name,
         username: user.username,
+        email: user.email,
         role: userType,
+        access: user.access,
         permissions: user.permissions || [],
       },
     });
@@ -206,6 +208,12 @@ exports.registerAdminSubAdmin = async (req, res) => {
     if (!roleModelMap[role]) {
       return res.status(400).json({ message: "Invalid role" });
     }
+
+        // 🔹 **Check if password meets length requirement**
+        if (password.length < 6) {
+          return res.status(400).json({ message: "Please set password with at least 6 characters." });
+        }
+  
 
     // 3️⃣ **Check if passwords match**
     if (password !== confirmPassword) {

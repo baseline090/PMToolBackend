@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
-const HMSchema = new mongoose.Schema(
+const hmSchema = new mongoose.Schema(
   {
     name: { type: String, required: true },
     username: { type: String, required: true, unique: true },
@@ -17,10 +17,10 @@ const HMSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-HMSchema.pre("save", async function (next) {
+hmSchema.pre("save", async function (next) {
   if (!this.isModified("password")) return next();
   this.password = await bcrypt.hash(this.password, 10);
   next();
 });
 
-module.exports = mongoose.model("HM", HMSchema, "HM"); // 🔹 Collection name: BDM
+module.exports = mongoose.model("HM", hmSchema, "HM"); // 🔹 Collection name: BDM

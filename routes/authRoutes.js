@@ -10,6 +10,37 @@ const hmController = require('../controllers/HMController')
 const pmController = require('../controllers/PMController')
 const teamleadController = require('../controllers/TeamLeadController')
 const employeeController = require('../controllers/EmployeeController')
+const otpController = require("../controllers/otpController");
+
+
+
+
+
+
+
+
+//////------------- Common Routes --------------------------------------////////
+
+// ✅ Unified Admin Login (Super Admin, Sub Admin, Admin)
+router.post('/admins/login', [
+  body('email').isEmail(),
+  body('password').notEmpty(),
+], superAdminController.adminLogin);  // 🔥 Make sure this function is correctly imported
+
+
+// Route for sending OTP
+router.post("/forgotpassword", otpController.forgotPassword);
+
+// Route for verifying OTP (returns JWT resetToken)
+router.post("/verifyotp", otpController.verifyOtp);
+
+// Route for resetting password (requires JWT in Authorization header)
+router.post("/resetpassword", otpController.resetPassword);
+
+
+////----------------------------------------------------------------//////////////////
+
+
 
 
 /////---------super admin routes -----------------------------------//////
@@ -29,12 +60,6 @@ router.post('/register-admin-subadmin', auth.authenticateJWT, auth.authorizeRole
   body('confirmPassword').exists(),
   body('role').isIn(['sub-admin', 'admin']),
 ], superAdminController.registerAdminSubAdmin);
-
-// ✅ Unified Admin Login (Super Admin, Sub Admin, Admin)
-router.post('/admins/login', [
-  body('email').isEmail(),
-  body('password').notEmpty(),
-], superAdminController.adminLogin);  // 🔥 Make sure this function is correctly imported
 
 router.put('/super-admin/update/profile', auth.authenticateJWT, auth.authorizeRole('super-admin'), superAdminController.updateSuperAdminProfile);
 
