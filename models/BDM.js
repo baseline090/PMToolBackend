@@ -13,7 +13,7 @@ const bdmSchema = new mongoose.Schema(
     access: { type: String, default: "view,edit,update,add,delete" },
     role: { type: String, default: "BDM" },
     
-    permissions: { type: [String], default: ["dashboard","projects","interviews","Notice","Accounts"] },
+    permissions: { type: [String], default: ["dashboard","projects","interviews","Notice","Accounts","employee"] },
   },
   { timestamps: true }
 );

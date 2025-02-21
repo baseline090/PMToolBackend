@@ -131,49 +131,6 @@ exports.addCandidate = async (req, res) => {
   
 
 
-// // ✅ BDM - Delete Candidate API (with Access Control)
-// exports.deleteCandidate = async (req, res) => {
-//   try {
-//     const { candidateId, role } = req.body;
-//     const bdmId = req.user.id; // BDM ID from JWT
-
-//     console.log("🔹 BDM Deleting Candidate:", req.body);
-
-//     // Forbidden: HR cannot delete Super Admin
-//     if (role === "super-admin") {
-//       return res.status(403).json({ message: "Access denied: You cannot delete a Super Admin" });
-//     }
-
-//     // Fetch the HR user to check their access
-//     const bdm = await BDM.findById(bdmId);
-//     if (!bdm) {
-//       return res.status(404).json({ message: "BDM not found" });
-//     }
-
-//     // Check if BDM has 'delete' permission
-//     if (!bdm.access.includes("delete")) {
-//       return res.status(403).json({ message: "Access denied: You do not have permission to delete candidates" });
-//     }
-
-//     // Fetch the candidate to delete based on role
-//     const RoleModel = roleModelMap[role];
-//     const candidate = await RoleModel.findById(candidateId);
-//     if (!candidate) {
-//       return res.status(404).json({ message: `${role} not found` });
-//     }
-
-//     // Delete the candidate
-//     await RoleModel.findByIdAndDelete(candidateId);
-
-//     console.log(`✅ ${role} Deleted Successfully:`, candidate);
-//     res.status(200).json({ message: `${role} deleted successfully`, data: candidate });
-
-//   } catch (error) {
-//     console.error("❌ Error Deleting Candidate:", error.message);
-//     res.status(500).json({ message: "Error deleting candidate", error: error.message });
-//   }
-// };
-
 
 
 // ✅ BDM - Delete Candidate API (with Access Control)
@@ -229,57 +186,6 @@ exports.deleteCandidate = async (req, res) => {
   
 
 
-
-
-
-
-
-
-// // ✅ BDM - View Candidate Profile API (with Access Control)
-// exports.viewCandidate = async (req, res) => {
-//     try {
-//       const { candidateId } = req.body; // Get the candidate ID from the request body
-//       const bdmId = req.user.id; // BDM ID from JWT
-  
-//       // Fetch the BDM user to check their access
-//       const bdm = await BDM.findById(bdmId);
-//       if (!bdm) {
-//         return res.status(404).json({ message: "BDM not found" });
-//       }
-  
-//       // Check if BDM has 'view' permission
-//       if (!bdm.access.includes("view")) {
-//         return res.status(403).json({ message: "Access denied: You do not have permission to view profiles" });
-//       }
-  
-//       // Check if the candidate is a Super Admin - BDM cannot view Super Admin profiles
-//       const superAdmin = await SuperAdmin.findById(candidateId);
-//       if (superAdmin) {
-//         return res.status(403).json({ message: "Access denied: You cannot view the Super Admin profile" });
-//       }
-  
-//       // ✅ Fetch candidate only from allowed collections (PM, Employee, TeamLead, HM)
-//       const allowedCollections = [PM, Employee, TeamLead, HM];
-  
-//       let candidate = null;
-//       for (const Model of allowedCollections) {
-//         candidate = await Model.findById(candidateId);
-//         if (candidate) break; // Stop searching once a valid candidate is found
-//       }
-  
-//       if (!candidate) {
-//         return res.status(404).json({ message: "BDM not found or unauthorized to view this profile" });
-//       }
-  
-//       // Respond with the candidate profile
-//       res.status(200).json({ message: "Candidate profile fetched successfully", data: candidate });
-  
-//     } catch (error) {
-//       console.error("❌ Error Viewing Candidate Profile:", error.message);
-//       res.status(500).json({ message: "Error viewing candidate profile", error: error.message });
-//     }
-//   };
-  
 
 
 
@@ -371,54 +277,6 @@ exports.viewAllCandidates = async (req, res) => {
 
 
 
-// // ✅ BDM - Update Candidate Profile API (with Access Control)
-// exports.updateCandidate = async (req, res) => {
-//   try {
-//     const { candidateId, updatedFields } = req.body;  // Get the candidate ID and the fields to update
-//     const bdmId = req.user.id; // HR ID from JWT
-
-//     // Fetch the BDM user to check their access
-//     const bdm = await BDM.findById(bdmId);
-//     if (!bdm) {
-//       return res.status(404).json({ message: "BDM not found" });
-//     }
-
-//     // Check if BDM has 'update' or 'edit' permission
-//     if (!(bdm.access.includes("update") || bdm.access.includes("edit"))) {
-//       return res.status(403).json({ message: "Access denied: You do not have permission to update profiles" });
-//     }
-
-//     // Fetch the candidate profile to update
-//     const candidate = await BDM.findById(candidateId) ||
-//                       await HM.findById(candidateId) ||
-//                       await PM.findById(candidateId) ||
-//                       await Employee.findById(candidateId) ||
-//                       await TeamLead.findById(candidateId);
-    
-//     if (!candidate) {
-//       return res.status(404).json({ message: "Candidate not found" });
-//     }
-
-//     // Check if candidate is Super Admin, BDM can't update Super Admin profiles
-//     const superAdmin = await SuperAdmin.findById(candidateId);
-//     if (superAdmin) {
-//       return res.status(403).json({ message: "Access denied: You cannot update the Super Admin profile" });
-//     }
-
-//     // Update the candidate profile with the provided fields
-//     Object.assign(candidate, updatedFields);
-//     await candidate.save();
-
-//     // Respond with the updated candidate profile
-//     res.status(200).json({ message: "Candidate profile updated successfully", data: candidate });
-
-//   } catch (error) {
-//     console.error("❌ Error Updating Candidate Profile:", error.message);
-//     res.status(500).json({ message: "Error updating candidate profile", error: error.message });
-//   }
-// };
-
-
 
 // ✅ BDM - Update Candidate Profile API (with Access Control)
 exports.updateCandidate = async (req, res) => {
@@ -474,9 +332,7 @@ exports.updateCandidate = async (req, res) => {
 
 
 
-
-
-// ✅ BDM - Assign Project to Candidate API (Fixed)
+// ✅ BDM - Assign Project to Candidate API (Fixed - No Duplicates)
 exports.assignProjectToCandidate = async (req, res) => {
   try {
       const { candidateId, project, role } = req.body;
@@ -507,25 +363,30 @@ exports.assignProjectToCandidate = async (req, res) => {
           candidateModel = TeamLead;
       }
 
-      // 🔍 Find the candidate and update projects array using `$push`
-      const updatedCandidate = await candidateModel.findByIdAndUpdate(
-          candidateId,
-          { $push: { projects: project } }, // ✅ Use `$push` to add to the array
-          { new: true } // Return the updated document
-      );
-
-      if (!updatedCandidate) {
+      // 🔍 Find the candidate
+      const candidate = await candidateModel.findById(candidateId);
+      if (!candidate) {
           return res.status(404).json({ message: `${role} not found` });
       }
 
+      // 🚨 Check if the project already exists in the projects array
+      if (candidate.projects.includes(project)) {
+          return res.status(400).json({ message: `Project '${project}' is already assigned to ${role}` });
+      }
+
+      // ✅ Add the project since it's not a duplicate
+      candidate.projects.push(project);
+      await candidate.save();
+
       console.log(`✅ Project '${project}' assigned to ${role} ID: ${candidateId}`);
-      res.status(200).json({ message: `Project '${project}' assigned successfully to ${role}`, data: updatedCandidate });
+      res.status(200).json({ message: `Project '${project}' assigned successfully to ${role}`, data: candidate });
 
   } catch (error) {
       console.error("❌ Error Assigning Project:", error.message);
       res.status(500).json({ message: "Error assigning project", error: error.message });
   }
 };
+
 
 
 
