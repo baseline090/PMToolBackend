@@ -469,3 +469,116 @@ exports.updateCandidate = async (req, res) => {
     }
   };
   
+
+
+
+
+
+
+
+// ✅ BDM - Assign Project to Candidate API (Fixed)
+exports.assignProjectToCandidate = async (req, res) => {
+  try {
+      const { candidateId, project, role } = req.body;
+      const bdmId = req.user.id; // BDM ID from JWT
+
+      console.log("🔹 BDM Assigning Project:", req.body);
+
+      // 🔍 Fetch the BDM user from DB
+      const bdm = await BDM.findById(bdmId);
+      if (!bdm) {
+          return res.status(404).json({ message: "BDM not found" });
+      }
+
+      // 🔍 Check if the BDM has the required role & permissions
+      if (bdm.role !== "BDM" || !bdm.permissions.includes("projects")) {
+          return res.status(403).json({ message: "Access denied: You are not authorized to assign projects" });
+      }
+
+      // 🔍 Validate role (Must be Employee or TeamLead)
+      if (!["Employee", "TeamLead"].includes(role)) {
+          return res.status(400).json({ message: "Invalid role. Must be 'Employee' or 'TeamLead'" });
+      }
+
+      let candidateModel;
+      if (role === "Employee") {
+          candidateModel = Employee;
+      } else if (role === "TeamLead") {
+          candidateModel = TeamLead;
+      }
+
+      // 🔍 Find the candidate and update projects array using `$push`
+      const updatedCandidate = await candidateModel.findByIdAndUpdate(
+          candidateId,
+          { $push: { projects: project } }, // ✅ Use `$push` to add to the array
+          { new: true } // Return the updated document
+      );
+
+      if (!updatedCandidate) {
+          return res.status(404).json({ message: `${role} not found` });
+      }
+
+      console.log(`✅ Project '${project}' assigned to ${role} ID: ${candidateId}`);
+      res.status(200).json({ message: `Project '${project}' assigned successfully to ${role}`, data: updatedCandidate });
+
+  } catch (error) {
+      console.error("❌ Error Assigning Project:", error.message);
+      res.status(500).json({ message: "Error assigning project", error: error.message });
+  }
+};
+
+
+
+// ✅ BDM - Remove Assigned Project API
+exports.removeAssignedProject = async (req, res) => {
+  try {
+      const { candidateId, project, role } = req.body;
+      const bdmId = req.user.id; // BDM ID from JWT
+
+      console.log("🔹 BDM Removing Project:", req.body);
+
+      // 🔍 Fetch the BDM user from DB
+      const bdm = await BDM.findById(bdmId);
+      if (!bdm) {
+          return res.status(404).json({ message: "BDM not found" });
+      }
+
+      // 🔍 Check if the BDM has the required role & permissions
+      if (bdm.role !== "BDM" || !bdm.permissions.includes("projects")) {
+          return res.status(403).json({ message: "Access denied: You are not authorized to remove projects" });
+      }
+
+      // Select the correct model based on the role
+      let CandidateModel;
+      if (role === "Employee") {
+          CandidateModel = Employee;
+      } else if (role === "TeamLead") {
+          CandidateModel = TeamLead;
+      } else {
+          return res.status(400).json({ message: "Invalid role provided" });
+      }
+
+      // 🔍 Find the Candidate in the database
+      const candidate = await CandidateModel.findById(candidateId);
+      if (!candidate) {
+          return res.status(404).json({ message: "Candidate not found" });
+      }
+
+      // Check if the project exists in the candidate's projects array
+      if (!candidate.projects.includes(project)) {
+          return res.status(404).json({ message: "Project not assigned to this candidate" });
+      }
+
+      // ✅ Remove the project from the array
+      candidate.projects = candidate.projects.filter(proj => proj !== project);
+      await candidate.save();
+
+      console.log(`✅ Project '${project}' removed from Candidate ID: ${candidateId}`);
+      res.status(200).json({ message: `Project '${project}' removed successfully`, data: candidate });
+
+  } catch (error) {
+      console.error("❌ Error Removing Project:", error.message);
+      res.status(500).json({ message: "Error removing project", error: error.message });
+  }
+};
+ 

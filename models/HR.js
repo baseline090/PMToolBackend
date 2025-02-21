@@ -11,7 +11,7 @@ const hrSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     residenceAddress: { type: String, required: true },
     role: { type: String, default: "HR" },
-    permissions: { type: [String], default: [] },
+    permissions: { type: [String], default: ["dashboard","employee","tasks","Notice","leaves"] },
     access: { type: String, default: "view,edit,update,add,delete" },
   },
   { timestamps: true }

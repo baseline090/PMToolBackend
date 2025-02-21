@@ -13,6 +13,7 @@ const teamLeadSchema = new mongoose.Schema(
     role: { type: String, default: "TeamLead" },
     permissions: { type: [String], default: [] },
     access: { type: String, default: "view" },
+    projects: { type: [String], default: [] },
   },
   { timestamps: true }
 );

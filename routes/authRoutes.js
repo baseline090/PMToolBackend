@@ -163,6 +163,35 @@ router.put('/bdm/update/candidate', auth.authenticateJWT, auth.authorizeRole('BD
   body('role').isIn(['HM', 'PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
 ], bdmController.updateCandidate);
 
+
+
+// ✅ BDM - Assign Project to Candidate (Protected Route)
+router.post('/bdm/add/assign-project/candidate', 
+  auth.authenticateJWT, 
+  auth.authorizeRole('BDM'), 
+  [
+    body('candidateId').notEmpty(),  // Candidate ID (Employee or TeamLead)
+    body('project').notEmpty(),       // Project name
+    body('role').isIn(['Employee', 'TeamLead']) // ✅ Allowed Roles
+  ], 
+  bdmController.assignProjectToCandidate
+);
+
+// ✅ BDM - Remove Assigned Project (Protected Route)
+router.delete('/bdm/remove/assign-project/candidate', 
+  auth.authenticateJWT, 
+  auth.authorizeRole('BDM'), 
+  [
+    body('candidateId').notEmpty(),  // Candidate ID must be provided
+    body('project').notEmpty(),      // Project name must be provided
+    body('role').isIn(['Employee', 'TeamLead']) // ✅ Allowed Roles
+  ], 
+  bdmController.removeAssignedProject
+);
+
+
+
+
 /////////////---------------------------------------------------------------------------------///////////////////////////////////////////////
 
 

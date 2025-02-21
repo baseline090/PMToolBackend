@@ -11,7 +11,7 @@ const pmSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     residenceAddress: { type: String, required: true },
     role: { type: String, default: "PM" },
-    permissions: { type: [String], default: [] },
+    permissions: { type: [String], default: ["dashboard","employee"] },
     access: { type: String, default: "view,edit" },
   },
   { timestamps: true }

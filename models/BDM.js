@@ -13,7 +13,7 @@ const bdmSchema = new mongoose.Schema(
     access: { type: String, default: "view,edit,update,add,delete" },
     role: { type: String, default: "BDM" },
     
-    permissions: { type: [String], default: [] },
+    permissions: { type: [String], default: ["dashboard","projects","interviews","Notice","Accounts"] },
   },
   { timestamps: true }
 );
@@ -25,3 +25,6 @@ bdmSchema.pre("save", async function (next) {
 });
 
 module.exports = mongoose.model("BDM", bdmSchema, "BDM"); // 🔹 Collection name: BDM
+
+
+

@@ -13,6 +13,7 @@ const employeeSchema = new mongoose.Schema(
     role: { type: String, default: "Employee" },
     permissions: { type: [String], default: [] },
     access: { type: String, default: "view" },
+    projects: { type: [String], default: [] },
   },
   { timestamps: true }
 );

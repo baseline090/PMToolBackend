@@ -12,7 +12,7 @@ const hmSchema = new mongoose.Schema(
     residenceAddress: { type: String, required: true },
     role: { type: String, default: "HM" },
     access: { type: String, default: "view,edit" },
-    permissions: { type: [String], default: [] },
+    permissions: { type: [String], default: ["dashboard","employee"] },
   },
   { timestamps: true }
 );
