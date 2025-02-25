@@ -13,6 +13,7 @@ const employeeController = require('../controllers/EmployeeController')
 const otpController = require("../controllers/otpController");
 const addCandidateController = require("../controllers/addCandidateController");
 const deleteCandidateController = require("../controllers/deleteCandidateController");
+const accountDetailController = require("../controllers/accountDetailController");
 
 
 
@@ -42,6 +43,10 @@ router.post("/verifyotp", otpController.verifyOtp);
 router.post("/resetpassword", otpController.resetPassword);
 
 
+// ✅ Get Account Details (Protected Route)
+router.get("/account-details", auth.authenticateJWT, accountDetailController.getAccountDetails);
+
+module.exports = router;
 
 // // ✅ Add Candidate (Protected Route)
 // router.post("/add/candidate", auth.authenticateJWT, [
