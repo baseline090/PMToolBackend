@@ -311,3 +311,117 @@ exports.updateCandidate = async (req, res) => {
 };
 
 
+
+
+// ✅ HR - Assign Project to Candidate API (Fixed - No Duplicates)
+exports.assignProjectToCandidate = async (req, res) => {
+  try {
+      const { candidateId, project, role } = req.body;
+      const hrId = req.user.id; // HR ID from JWT
+
+      console.log("🔹 HR Assigning Project:", req.body);
+
+      // 🔍 Fetch the HR user from DB
+      const hr = await HR.findById(hrId);
+      if (!hr) {
+          return res.status(404).json({ message: "HR not found" });
+      }
+
+      // 🔍 Check if the HR has the required role & permissions
+      if (hr.role !== "HR" || !hr.permissions.includes("projects")) {
+          return res.status(403).json({ message: "Access denied: You are not authorized to assign projects" });
+      }
+
+      // 🔍 Validate role (Must be Employee or TeamLead)
+      if (!["Employee", "TeamLead"].includes(role)) {
+          return res.status(400).json({ message: "Invalid role. Must be 'Employee' or 'TeamLead'" });
+      }
+
+      let candidateModel;
+      if (role === "Employee") {
+          candidateModel = Employee;
+      } else if (role === "TeamLead") {
+          candidateModel = TeamLead;
+      }
+
+      // 🔍 Find the candidate
+      const candidate = await candidateModel.findById(candidateId);
+      if (!candidate) {
+          return res.status(404).json({ message: `${role} not found` });
+      }
+
+      // 🚨 Check if the project already exists in the projects array
+      if (candidate.projects.includes(project)) {
+          return res.status(400).json({ message: `Project '${project}' is already assigned to ${role}` });
+      }
+
+      // ✅ Add the project since it's not a duplicate
+      candidate.projects.push(project);
+      await candidate.save();
+
+      console.log(`✅ Project '${project}' assigned to ${role} ID: ${candidateId}`);
+      res.status(200).json({ message: `Project '${project}' assigned successfully to ${role}`, data: candidate });
+
+  } catch (error) {
+      console.error("❌ Error Assigning Project:", error.message);
+      res.status(500).json({ message: "Error assigning project", error: error.message });
+  }
+};
+
+
+
+
+// ✅ HR - Remove Assigned Project API
+exports.removeAssignedProject = async (req, res) => {
+  try {
+      const { candidateId, project, role } = req.body;
+      const hrId = req.user.id; // HR ID from JWT
+
+      console.log("🔹 HR Removing Project:", req.body);
+
+      // 🔍 Fetch the HR user from DB
+      const hr = await HR.findById(hrId);
+      if (!hr) {
+          return res.status(404).json({ message: "HR not found" });
+      }
+
+      // 🔍 Check if the HR has the required role & permissions
+      if (hr.role !== "HR" || !hr.permissions.includes("projects")) {
+          return res.status(403).json({ message: "Access denied: You are not authorized to remove projects" });
+      }
+
+      // Select the correct model based on the role
+      let CandidateModel;
+      if (role === "Employee") {
+          CandidateModel = Employee;
+      } else if (role === "TeamLead") {
+          CandidateModel = TeamLead;
+      } else {
+          return res.status(400).json({ message: "Invalid role provided" });
+      }
+
+      // 🔍 Find the Candidate in the database
+      const candidate = await CandidateModel.findById(candidateId);
+      if (!candidate) {
+          return res.status(404).json({ message: "Candidate not found" });
+      }
+
+      // Check if the project exists in the candidate's projects array
+      if (!candidate.projects.includes(project)) {
+          return res.status(404).json({ message: "Project not assigned to this candidate" });
+      }
+
+      // ✅ Remove the project from the array
+      candidate.projects = candidate.projects.filter(proj => proj !== project);
+      await candidate.save();
+
+      console.log(`✅ Project '${project}' removed from Candidate ID: ${candidateId}`);
+      res.status(200).json({ message: `Project '${project}' removed successfully`, data: candidate });
+
+  } catch (error) {
+      console.error("❌ Error Removing Project:", error.message);
+      res.status(500).json({ message: "Error removing project", error: error.message });
+  }
+};
+ 
+

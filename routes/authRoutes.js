@@ -11,11 +11,15 @@ const pmController = require('../controllers/PMController')
 const teamleadController = require('../controllers/TeamLeadController')
 const employeeController = require('../controllers/EmployeeController')
 const otpController = require("../controllers/otpController");
+const addCandidateController = require("../controllers/addCandidateController");
+const deleteCandidateController = require("../controllers/deleteCandidateController");
 
 
 
 
-
+// ✅ Allowed roles for adding candidates based on hierarchy
+const allowedRolesadd = ["HR", "BDM", "Employee", "TeamLead", "HM", "PM"];
+const allowedRolesdelete = ["HR", "BDM", "Employee", "TeamLead", "HM", "PM"];
 
 
 
@@ -36,6 +40,37 @@ router.post("/verifyotp", otpController.verifyOtp);
 
 // Route for resetting password (requires JWT in Authorization header)
 router.post("/resetpassword", otpController.resetPassword);
+
+
+
+// // ✅ Add Candidate (Protected Route)
+// router.post("/add/candidate", auth.authenticateJWT, [
+//     body("name").notEmpty(),
+//     body("username").notEmpty(),
+//     body("email").isEmail(),
+//     body("role").isIn(["HR", "BDM", "Employee", "TeamLead", "HM", "PM", "SuperAdmin"]), // ✅ Exact Role Names
+// ], addCandidateController.addCandidate);
+
+// ✅ Add Candidate (Protected Route)
+router.post(
+  "/add/candidate",
+  auth.authenticateJWT,
+  [
+      body("name").notEmpty(),
+      body("username").notEmpty(),
+      body("email").isEmail(),
+      body("role").isIn(allowedRolesadd), // ✅ Only allow roles based on the defined hierarchy
+  ],
+  addCandidateController.addCandidate
+);
+
+
+
+// ✅ Delete Candidate (Protected Route)
+router.delete("/delete/candidate", auth.authenticateJWT, [
+    body("candidateId").notEmpty(),
+    body("role").isIn(allowedRolesdelete), // ✅ Exact Role Names
+], deleteCandidateController.deleteCandidate);
 
 
 ////----------------------------------------------------------------//////////////////
@@ -73,7 +108,7 @@ router.put('/super-admin/update/allcandidate', auth.authenticateJWT, auth.author
 
 
 
-////////------------------HR Routes -------------------------------------------------////
+////////---------------------------------HR Routes ---------------------------------------------------////
 
 
 // ✅ HR -  own update profile (Protected Route)
@@ -115,7 +150,35 @@ router.put('/hr/update/candidate', auth.authenticateJWT, auth.authorizeRole('HR'
   body('role').isIn(['BDM', 'HM', 'PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
 ], hrController.updateCandidate);
 
-/////////////---------------------------------------------------------------------------------///////////////////////////////////////////////
+
+
+// ✅ HR - Assign Project to Candidate (Protected Route)
+router.post('/hr/add/assign-project/candidate', 
+  auth.authenticateJWT, 
+  auth.authorizeRole('HR'), 
+  [
+    body('candidateId').notEmpty(),  // Candidate ID (Employee or TeamLead)
+    body('project').notEmpty(),       // Project name
+    body('role').isIn(['Employee', 'TeamLead']) // ✅ Allowed Roles
+  ], 
+  hrController.assignProjectToCandidate
+);
+
+// ✅ HR - Remove Assigned Project (Protected Route)
+router.delete('/hr/remove/assign-project/candidate', 
+  auth.authenticateJWT, 
+  auth.authorizeRole('HR'), 
+  [
+    body('candidateId').notEmpty(),  // Candidate ID must be provided
+    body('project').notEmpty(),      // Project name must be provided
+    body('role').isIn(['Employee', 'TeamLead']) // ✅ Allowed Roles
+  ], 
+  hrController.removeAssignedProject
+);
+
+
+
+/////////////------------------------------------------------------------------------------------///////////////////////////////////////////////
 
 
 
@@ -262,6 +325,7 @@ router.get('/teamlead/view/allcandidates', auth.authenticateJWT, auth.authorizeR
 
 
 /////////////---------------------------------------------------------------------------------///////////////////////////////////////////////
+
 
 
 ////////------------------Employee Routes -------------------------------------------------////

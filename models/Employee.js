@@ -11,7 +11,7 @@ const employeeSchema = new mongoose.Schema(
     email: { type: String, required: true, unique: true },
     residenceAddress: { type: String, required: true },
     role: { type: String, default: "Employee" },
-    permissions: { type: [String], default: [] },
+    permissions: { type: [String], default: ["dashboard","employee"] },
     access: { type: String, default: "view" },
     projects: { type: [String], default: [] },
   },

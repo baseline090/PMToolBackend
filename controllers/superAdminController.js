@@ -93,7 +93,7 @@ exports.adminLogin = async (req, res) => {
     const superAdminUser = await SuperAdmin.findOne({ username });
     if (superAdminUser) {
       user = superAdminUser;
-      userType = "super-admin";
+      userType = "SuperAdmin";
     }
 
     // 🔍 If not found in SuperAdmin, check in role-based collections (HR, BDM, PM, Employee, TeamLead)
@@ -123,10 +123,11 @@ exports.adminLogin = async (req, res) => {
     const tokenPayload = {
       id: user._id,
       role: userType,
+      access: user.access
     };
 
     // 🎯 Add permissions if not Super Admin
-    if (userType !== "super-admin") {
+    if (userType !== "SuperAdmin") {
       tokenPayload.permissions = user.permissions || [];
     }
 
