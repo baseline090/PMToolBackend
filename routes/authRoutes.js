@@ -14,6 +14,7 @@ const otpController = require("../controllers/otpController");
 const addCandidateController = require("../controllers/addCandidateController");
 const deleteCandidateController = require("../controllers/deleteCandidateController");
 const accountDetailController = require("../controllers/accountDetailController");
+const accountUpdateController = require("../controllers/accountUpdateController");
 
 
 
@@ -181,6 +182,9 @@ router.delete('/hr/remove/assign-project/candidate',
   hrController.removeAssignedProject
 );
 
+
+// ✅ Update Account Details (Protected Route)
+router.put("/account-update", auth.authenticateJWT, accountUpdateController.updateAccountDetails);
 
 
 /////////////------------------------------------------------------------------------------------///////////////////////////////////////////////
