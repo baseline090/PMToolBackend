@@ -125,3 +125,5 @@ exports.getAllCandidates = async (req, res) => {
         res.status(500).json({ message: "Error fetching candidates", error: error.message });
     }
 };
+
+

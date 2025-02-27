@@ -14,6 +14,7 @@ const teamLeadSchema = new mongoose.Schema(
     permissions: { type: [String], default: [] },
     access: { type: String, default: "view" },
     projects: { type: [String], default: [] },
+    status: { type: String, default: "Active"},
   },
   { timestamps: true }
 );

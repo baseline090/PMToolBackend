@@ -13,6 +13,7 @@ const hmSchema = new mongoose.Schema(
     role: { type: String, default: "HM" },
     access: { type: String, default: "view,edit" },
     permissions: { type: [String], default: ["dashboard","employee"] },
+    status: { type: String, default: "Active"},
   },
   { timestamps: true }
 );

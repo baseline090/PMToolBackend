@@ -14,6 +14,7 @@ const bdmSchema = new mongoose.Schema(
     role: { type: String, default: "BDM" },
     
     permissions: { type: [String], default: ["dashboard","projects","interviews","Notice","Accounts","employee"] },
+    status: { type: String, default: "Active"},
   },
   { timestamps: true }
 );

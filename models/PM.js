@@ -13,6 +13,7 @@ const pmSchema = new mongoose.Schema(
     role: { type: String, default: "PM" },
     permissions: { type: [String], default: ["dashboard","employee"] },
     access: { type: String, default: "view,edit" },
+    status: { type: String, default: "Active"},
   },
   { timestamps: true }
 );

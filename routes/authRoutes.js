@@ -17,6 +17,7 @@ const accountDetailController = require("../controllers/accountDetailController"
 const accountUpdateController = require("../controllers/accountUpdateController");
 const subAdminController = require("../controllers/getSubAdminListController");
 const updateProfileController = require("../controllers/updateSubAdminController");
+const subadminAdminDeactivateController = require("../controllers/subadminAdminDeactivateController");
 
 
 
@@ -51,13 +52,6 @@ router.get("/account-details", auth.authenticateJWT, accountDetailController.get
 
 module.exports = router;
 
-// // ✅ Add Candidate (Protected Route)
-// router.post("/add/candidate", auth.authenticateJWT, [
-//     body("name").notEmpty(),
-//     body("username").notEmpty(),
-//     body("email").isEmail(),
-//     body("role").isIn(["HR", "BDM", "Employee", "TeamLead", "HM", "PM", "SuperAdmin"]), // ✅ Exact Role Names
-// ], addCandidateController.addCandidate);
 
 // ✅ Add Candidate (Protected Route)
 router.post(
@@ -111,13 +105,6 @@ router.get(
 );
 
 
-// router.get(
-//   "/get/all/sub-admin/detail",
-//   auth.authenticateJWT,
-//   auth.authorizeRole(["BDM", "HM", "HR", "PM", "TeamLead", "SuperAdmin"]), // ✅ Allowed Roles
-//   subAdminController.getAllSubAdminDetails
-// );
-
 
 
 // ✅ Fetch All Candidates (Protected Route)
@@ -138,6 +125,13 @@ router.put(
 );
 
 
+// ✅ deactivate/activate  Candidates (Protected Route)
+router.put(
+  "/subadmin/active-deactivate",
+  auth.authenticateJWT,
+  auth.authorizeRole(["HR", "SuperAdmin", "BDM"]),
+  subadminAdminDeactivateController.activate_deactivateUser
+);
 
 ////----------------------------------------------------------------//////////////////
 
