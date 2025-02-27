@@ -27,14 +27,6 @@ app.get('/',(req,res)=>{
 // Routes
 app.use('/api', authRoutes); // Handles login, registration, and profile updates
 
-// // Protected dashboard route
-// app.get('/api/dashboard', auth, (req, res) => {
-//     res.json({
-//         message: 'Welcome to your dashboard!',
-//         user: req.user // Decoded user data from the token
-//     });
-// });
-
 
 // Protected route for testing (Admin Dashboard)
 app.get('/api/admin/dashboard', (req, res) => {

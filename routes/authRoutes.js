@@ -5,7 +5,7 @@ const auth = require('../middleware/auth');
 const multer = require('multer');
 const hrController = require('../controllers/HRController');
 const bdmController = require('../controllers/BDMController');
-const superAdminController = require('../controllers/superAdminController');
+const superAdminController = require('../controllers/SuperAdminController');
 const hmController = require('../controllers/HMController')
 const pmController = require('../controllers/PMController')
 const teamleadController = require('../controllers/TeamLeadController')
@@ -15,6 +15,8 @@ const addCandidateController = require("../controllers/addCandidateController");
 const deleteCandidateController = require("../controllers/deleteCandidateController");
 const accountDetailController = require("../controllers/accountDetailController");
 const accountUpdateController = require("../controllers/accountUpdateController");
+const subAdminController = require("../controllers/getSubAdminListController");
+const updateProfileController = require("../controllers/updateSubAdminController");
 
 
 
@@ -77,6 +79,64 @@ router.delete("/delete/candidate", auth.authenticateJWT, [
     body("candidateId").notEmpty(),
     body("role").isIn(allowedRolesdelete), // ✅ Exact Role Names
 ], deleteCandidateController.deleteCandidate);
+
+
+
+
+// // ✅ View Sub-Admin Candidates (Protected Route)
+// router.get(
+//   "/subadmin/all-list",
+//   auth.authenticateJWT, 
+//   auth.authorizeRole(["HR", "BDM", "TeamLead", "PM", "HM", "SuperAdmin"]),
+//   subAdminController.getSubAdminList
+// );
+
+
+
+// // ✅ View Sub-Admin Candidates (Protected Route)
+// router.get('/subadmin/all-list', auth.authenticateJWT, auth.authorizeRole(["HR", "BDM", "TeamLead", "PM", "HM", "SuperAdmin"]), [
+//   body('candidateId').notEmpty(),
+//   body('role').isIn(['HR', 'BDM', 'HM', 'PM', 'Employee', 'TeamLead']), // ✅ Allowed Roles
+// ], subAdminController.getSubAdminList);
+
+// ✅ View Sub-Admin Candidates (Protected Route)
+router.get(
+  "/subadmin/all-list",
+  auth.authenticateJWT,
+  auth.authorizeRole(["HR", "BDM", "TeamLead", "PM", "HM", "SuperAdmin"]), // ✅ Allowed Roles
+  [
+    body("role").isIn(["HR", "BDM", "HM", "PM", "TeamLead", "Employee"]).withMessage("Invalid role specified") // ✅ Validate Role
+  ],
+  subAdminController.getSubAdminList
+);
+
+
+// router.get(
+//   "/get/all/sub-admin/detail",
+//   auth.authenticateJWT,
+//   auth.authorizeRole(["BDM", "HM", "HR", "PM", "TeamLead", "SuperAdmin"]), // ✅ Allowed Roles
+//   subAdminController.getAllSubAdminDetails
+// );
+
+
+
+// ✅ Fetch All Candidates (Protected Route)
+router.get(
+  "/subadmin/candidate/all-list",
+  auth.authenticateJWT,
+  auth.authorizeRole(["PM", "HM", "HR", "TeamLead", "SuperAdmin", "Employee"]), // ✅ Allowed roles
+  subAdminController.getAllCandidates
+);
+
+
+// ✅ Update  Candidates (Protected Route)
+router.put(
+  "/subadmin/update",
+  auth.authenticateJWT,
+  auth.authorizeRole(["HR", "BDM", "SuperAdmin"]), 
+  updateProfileController.updateProfile
+);
+
 
 
 ////----------------------------------------------------------------//////////////////
