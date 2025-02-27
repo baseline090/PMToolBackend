@@ -123,7 +123,8 @@ exports.adminLogin = async (req, res) => {
     const tokenPayload = {
       id: user._id,
       role: userType,
-      access: user.access
+      access: user.access,
+      status: user.status
     };
 
     // 🎯 Add permissions if not Super Admin
@@ -144,6 +145,7 @@ exports.adminLogin = async (req, res) => {
         email: user.email,
         role: userType,
         access: user.access,
+        status: user.status,
         permissions: user.permissions || [],
       },
     });

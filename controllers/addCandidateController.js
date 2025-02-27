@@ -12,11 +12,17 @@
 // const roleModelMap = {
 //     HR,
 //     BDM,
-//     SuperAdmin,
 //     Employee,
 //     TeamLead,
 //     PM,
 //     HM,
+// };
+
+// // ✅ Define Role-Based Add Permissions (Hierarchy)
+// const roleAddPermissions = {
+//     SuperAdmin: ["HR", "BDM", "Employee", "TeamLead", "HM", "PM"],
+//     HR: ["BDM", "Employee", "TeamLead", "HM", "PM"],
+//     BDM: ["Employee", "TeamLead", "HM", "PM"],
 // };
 
 // // ✅ Add Candidate API (Role & Access-Based)
@@ -27,32 +33,23 @@
 
 //         console.log("🔹 Adding Candidate:", req.body, "By:", userRole, "Access:", access);
 
-//         // 🔍 Allowed roles that can add candidates (Only HR, BDM, SuperAdmin)
-//         const allowedRoles = ["HR", "BDM", "SuperAdmin"];
-
-//         // ❌ Check if the logged-in user has permission to add candidates
-//         if (!allowedRoles.includes(userRole)) {
-//             return res.status(403).json({ message: "Access denied: You are not authorized to add candidates" });
+//         // ❌ SuperAdmin cannot be added by anyone
+//         if (role === "SuperAdmin") {
+//             return res.status(403).json({ message: "You cannot add a SuperAdmin" });
 //         }
 
-//         // ❌ Check if the user has the correct access permission
-//         const hasAddPermission = 
-//             (userRole === "SuperAdmin" && access.includes("full-access")) || // SuperAdmin needs "full-access"
-//             (["HR", "BDM", "Employee", "TeamLead", "HM", "PM" ].includes(userRole) && access.includes("add"));   // HR & BDM need "add" access
+//         // ✅ Check if the user has the correct access permission
+//         const hasAddPermission =
+//             (userRole === "SuperAdmin" && access === "full-access" && roleAddPermissions.SuperAdmin.includes(role)) ||
+//             (userRole in roleAddPermissions && roleAddPermissions[userRole].includes(role) && access.includes("add"));
 
 //         if (!hasAddPermission) {
-//             return res.status(403).json({ message: "Access denied: You do not have permission to add candidates" });
+//             return res.status(403).json({ message: "Access denied: You do not have permission to add this role" });
 //         }
 
 //         // 🔍 Validate required fields
 //         if (!name || !username || !password || !confirmPassword || !dob || !mobile || !email || !residenceAddress || !role) {
 //             return res.status(400).json({ message: "All fields are required" });
-//         }
-
-//         // 🔍 Validate the role being added (Must match DB role names exactly)
-//         const allowedCandidateRoles = ["HR", "BDM", "Employee", "TeamLead", "HM", "PM"];
-//         if (!allowedCandidateRoles.includes(role)) {
-//             return res.status(403).json({ message: "Invalid role: You cannot add this role" });
 //         }
 
 //         // ❌ Check if passwords match
@@ -105,9 +102,6 @@
 // };
 
 
-
-
-
 const bcrypt = require("bcrypt");
 const HR = require("../models/HR");
 const BDM = require("../models/BDM");
@@ -138,9 +132,14 @@ const roleAddPermissions = {
 exports.addCandidate = async (req, res) => {
     try {
         const { name, username, password, confirmPassword, dob, mobile, email, residenceAddress, role } = req.body;
-        const { id: userId, role: userRole, access } = req.user; // ✅ Extract `access` directly from JWT
+        const { id: userId, role: userRole, access, status } = req.user; // ✅ Extract `status` from JWT
 
-        console.log("🔹 Adding Candidate:", req.body, "By:", userRole, "Access:", access);
+        console.log("🔹 Adding Candidate:", req.body, "By:", userRole, "Access:", access, "Status:", status);
+
+        // ❌ Check if the user's status is "Active"
+        if (status !== "Active") {
+            return res.status(403).json({ message: "Access denied: Your account is not active" });
+        }
 
         // ❌ SuperAdmin cannot be added by anyone
         if (role === "SuperAdmin") {
