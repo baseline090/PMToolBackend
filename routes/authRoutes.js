@@ -18,6 +18,11 @@ const accountUpdateController = require("../controllers/accountUpdateController"
 const subAdminController = require("../controllers/getSubAdminListController");
 const updateProfileController = require("../controllers/updateSubAdminController");
 const subadminAdminDeactivateController = require("../controllers/subadminAdminDeactivateController");
+const createEmployeeController = require("../controllers/createEmployeeController");
+const getAllEmployeesController = require("../controllers/getAllEmployeesController");
+const getDeactivatedEmployeesController = require("../controllers/getDeactivatedEmployeesController");
+
+
 
 
 
@@ -132,6 +137,41 @@ router.put(
   auth.authorizeRole(["HR", "SuperAdmin", "BDM"]),
   subadminAdminDeactivateController.activate_deactivateUser
 );
+
+
+// ✅ add employee  Candidates (Protected Route)
+router.post(
+  "/employees/create-account",
+  auth.authenticateJWT,
+  auth.authorizeRole(["HR", "BDM", "SuperAdmin"]), // ✅ Role-based authorization
+  createEmployeeController.createEmployee
+);
+
+
+// ✅ Get All Employees (Protected Route)
+router.get(
+  "/employees/all-list",
+  auth.authenticateJWT,
+  auth.authorizeRole(["HR", "BDM", "SuperAdmin", "PM", "HM", "TeamLead", "Employee"]), // ✅ Role Authorization 
+  getAllEmployeesController.getAllEmployees
+);
+
+
+
+
+
+// ✅ Get All Deactivated Employees (Protected Route)
+router.get(
+  "/employees/deactivate/all-list",
+  auth.authenticateJWT,
+  auth.authorizeRole(["HR", "BDM", "SuperAdmin", "PM", "HM", "TeamLead"]), // ✅ Role Authorization
+  getDeactivatedEmployeesController.getDeactivatedEmployees
+);
+
+
+
+module.exports = router;
+
 
 ////----------------------------------------------------------------//////////////////
 

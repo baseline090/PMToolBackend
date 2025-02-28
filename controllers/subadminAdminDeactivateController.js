@@ -125,7 +125,7 @@ exports.activate_deactivateUser = async (req, res) => {
         }
     
         // ✅ Validate Status Value
-        const validStatusValues = ["Active", "Deactivated"];
+        const validStatusValues = ["Active", "Deactive"];
         if (!validStatusValues.includes(status)) {
           return res.status(400).json({ message: "Invalid status value. Allowed values: 'Active', 'Deactivated'" });
         }
