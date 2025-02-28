@@ -77,6 +77,86 @@ exports.registerSuperAdmin = async (req, res) => {
   }
 };
 
+// // ✅ Admin/Sub-Admin Login
+// exports.adminLogin = async (req, res) => {
+//   try {
+//     const { username, password } = req.body;
+
+//     if (!username || !password) {
+//       return res.status(400).json({ message: "Username and password are required" });
+//     }
+
+//     let user = null;
+//     let userType = null;
+
+//     // 🔍 First, check in SuperAdmin collection
+//     const superAdminUser = await SuperAdmin.findOne({ username });
+//     if (superAdminUser) {
+//       user = superAdminUser;
+//       userType = "SuperAdmin";
+//     }
+
+//     // 🔍 If not found in SuperAdmin, check in role-based collections (HR, BDM, PM, Employee, TeamLead)
+//     if (!user) {
+//       for (const [role, Model] of Object.entries(roleModelMap)) {
+//         const roleUser = await Model.findOne({ username });
+//         if (roleUser) {
+//           user = roleUser;
+//           userType = role;
+//           break;
+//         }
+//       }
+//     }
+
+//     // ❌ If user not found, return error
+//     if (!user) {
+//       return res.status(400).json({ message: "Invalid username or password" });
+//     }
+
+//     // 🔑 Compare password
+//     const isMatch = await bcrypt.compare(password, user.password);
+//     if (!isMatch) {
+//       return res.status(400).json({ message: "Invalid username or password" });
+//     }
+
+//     // 🛡️ Generate JWT token
+//     const tokenPayload = {
+//       id: user._id,
+//       role: userType,
+//       access: user.access,
+//       status: user.status
+//     };
+
+//     // 🎯 Add permissions if not Super Admin
+//     if (userType !== "SuperAdmin") {
+//       tokenPayload.permissions = user.permissions || [];
+//     }
+
+//     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: "1d" });
+
+//     // ✅ Response with Token & User Info
+//     res.json({
+//       message: "Login successful",
+//       token,
+//       user: {
+//         id: user._id,
+//         name: user.name,
+//         username: user.username,
+//         email: user.email,
+//         role: userType,
+//         access: user.access,
+//         status: user.status,
+//         permissions: user.permissions || [],
+//       },
+//     });
+
+//   } catch (error) {
+//     console.error("❌ Login Error:", error.message);
+//     res.status(500).json({ message: "Error logging in", error: error.message });
+//   }
+// };
+
+
 // ✅ Admin/Sub-Admin Login
 exports.adminLogin = async (req, res) => {
   try {
@@ -119,6 +199,11 @@ exports.adminLogin = async (req, res) => {
       return res.status(400).json({ message: "Invalid username or password" });
     }
 
+    // ❌ Check if account is active before issuing a token
+    if (user.status !== "Active") {
+      return res.status(403).json({ message: "Your account is not active. Please contact admin." });
+    }
+
     // 🛡️ Generate JWT token
     const tokenPayload = {
       id: user._id,
@@ -155,6 +240,14 @@ exports.adminLogin = async (req, res) => {
     res.status(500).json({ message: "Error logging in", error: error.message });
   }
 };
+
+
+
+
+
+
+
+
 
 
 
