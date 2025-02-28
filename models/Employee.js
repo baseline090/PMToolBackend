@@ -14,7 +14,9 @@ const employeeSchema = new mongoose.Schema(
     permissions: { type: [String], default: ["dashboard","employee"] },
     access: { type: String, default: "view" },
     projects: { type: [String], default: [] },
+    notices: { type: [String], default: [] },
     status: { type: String, default: "Active"},
+    
   },
   { timestamps: true }
 );

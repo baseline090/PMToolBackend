@@ -24,6 +24,7 @@ const getEmployeesController = require("../controllers/getEmployeeController");
 const getDeactivatedEmployeesController = require("../controllers/getDeactivatedEmployeesController");
 const updateEmployeeController = require("../controllers/updateEmployeeController"); 
 const deactivateEmployeeController = require("../controllers/deactivateEmployeeController"); 
+const noticesController = require("../controllers/noticesController"); // Controller
 
 
 
@@ -198,6 +199,18 @@ router.put(
   auth.authenticateJWT,
   auth.authorizeRole(["HR", "BDM", "SuperAdmin"]), // ✅ Role Authorization
   deactivateEmployeeController.deactivate_activeEmployee
+);
+
+
+
+
+
+// ✅ Add Notices to Candidate (Protected Route)
+router.patch(
+  "/notices/update",
+  auth.authenticateJWT,
+  auth.authorizeRole(["HR", "SuperAdmin", "BDM"]), // ✅ Only HR, SuperAdmin, and BDM can add notices
+  noticesController.addNoticeToCandidate
 );
 
 ////----------------------------------------------------------------//////////////////
