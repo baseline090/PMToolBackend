@@ -8,3 +8,59 @@ intInterview collection
                           --------Result :  (Hired/NotHired)
                          ----------Date:   (created curent time)
                        ------------LastUpdate:   (chan ge current time when only new entry was on   Status of the interview is updated  like when we cahnge somting on Result ,Status of the interview or any Change on Status of Hiring  )
+
+
+
+Projects collection---------------
+Title:
+Employee: ID from the employee table  and Teaml lead collection collection alowed
+         if id is not prensent in both then it say Employee was not found
+Employe Name: Fetch employe name dynimacly from the ID
+Employe role = Fetch employe role dynimacly from the ID
+Created Date: Curent date when it was created
+Status: in this it wil save curent date when the new status put in the value
+        Example : Curent Date when the Status was creasdte and  from next line 
+                  the content was save
+          eg:Date: 03-03-2025 Time : 13:40  (curent date and time when Status it was created and time format just like this )
+             Status : Toady i have did.......... etc
+          simiantinously as i add another data on the Status column
+Prject Activity : Active/Deactive (by dfalut Active)
+Hours Aloweded : " " (as Total hour can be aded by the authrized role)
+Working Online Hour:: it also structure like  Status example
+             Date:03-03-2025 Time: 14:02  (curent date and time when Status it was created and time format just like this ) 
+             and from the next line
+             8 (as per the the coming value eg: 8 or 5) we can acdd many as per requirement
+Working Offlin Hour:: iit also structure like  Status example
+             Date:03-03-2025 Time: 14:02  (curent date and time when Status it was created and time format just like this ) 
+             and from the next line
+             8 (as per the the coming value eg: 8 or 5) we can add many as per requirement
+
+as time we add hours to the Workng Online Hour and Working Offline Hour in the column the amount was deducted from the Hours Alowed
+eg if we have Hours Aloweded : 80
+and we added working Online Hour :  Date:03-03-2025 Time: 14:02 
+                                   8 Hour
+and we added Working Offline Hour :  Date:03-03-2025 Time: 14:02 
+                                   1 Hour
+
+then we have total 9 hour that we get from  Online Hour and Offlin Hour
+now so auto minus these from the Hours Aloweded
+like 80-9 = 71
+Now undated walus is 
+and then fiinal update taht output to the 
+Hours Aloweded : 71
+
+
+             
+Total Worked Hours: now in the Total worked hout in this all the hous of Offline and Online add tel and then add to th Total Wored Hour
+             AS example when we addd 8 and 1 then it would be 8 +1 =9
+          so Tital Worked Hour : 9
+
+i hope you unserstand 
+so this leatds like when i use employe id then it gives mew the employe detals also the project details
+and vise verce this leads the structured db
+
+
+now first make Project.js that hold the Projects collection schema
+i hopy you understand
+  
+               

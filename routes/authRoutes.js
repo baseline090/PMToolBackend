@@ -26,6 +26,7 @@ const updateEmployeeController = require("../controllers/updateEmployeeControlle
 const deactivateEmployeeController = require("../controllers/deactivateEmployeeController"); 
 const noticesController = require("../controllers/noticesController"); // Controller
 const hiringController = require("../controllers/hiringController");
+const projectController = require("../controllers/projectController");
 
 
 
@@ -259,6 +260,24 @@ router.put(
   hiringController.updateInterview
 );
 
+// ✅ Create Project (Protected Route)
+router.post(
+  "/project/create",
+  auth.authenticateJWT, // ✅ Check JWT
+  auth.authorizeRole(["HR", "HM", "BDM"]), // ✅ Only allowed roles
+  projectController.createProject
+);
+
+
+
+
+// ✅ Secure route for fetching all projects
+router.get(
+  "/project/all-list",
+  auth.authenticateJWT,
+  auth.authorizeRole(["HR", "HM", "BDM"]), // ✅ Only allowed roles
+  projectController.getAllProjects
+);
 
 ////----------------------------------------------------------------//////////////////
 
