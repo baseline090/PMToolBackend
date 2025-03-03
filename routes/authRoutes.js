@@ -25,7 +25,7 @@ const getDeactivatedEmployeesController = require("../controllers/getDeactivated
 const updateEmployeeController = require("../controllers/updateEmployeeController"); 
 const deactivateEmployeeController = require("../controllers/deactivateEmployeeController"); 
 const noticesController = require("../controllers/noticesController"); // Controller
-
+const hiringController = require("../controllers/hiringController");
 
 
 
@@ -203,8 +203,6 @@ router.put(
 
 
 
-
-
 // ✅ Add Notices to Candidate (Protected Route)
 router.patch(
   "/notices/update",
@@ -212,6 +210,55 @@ router.patch(
   auth.authorizeRole(["HR", "SuperAdmin", "BDM"]), // ✅ Only HR, SuperAdmin, and BDM can add notices
   noticesController.addNoticeToCandidate
 );
+
+
+// ✅ Create Interview (Protected Route)
+router.post(
+  "/interview/create",
+  auth.authenticateJWT,
+  auth.authorizeRole(["HR", "HM", "BDM"]), // ✅ Only allowed roles
+  hiringController.createInterview
+);
+
+
+
+// ✅ Get All Interviews (Protected Route)
+router.get(
+  "/interview/all-list",
+  auth.authenticateJWT,
+  auth.authorizeRole(["HR", "HM", "BDM"]), // ✅ Only allowed roles
+  hiringController.getAllInterviews
+);
+
+
+
+
+// ✅ Get Single Interview (Protected Route)
+router.get(
+  "/interview/single-list/:interviewId", // ✅ Takes interviewId in URL
+  auth.authenticateJWT,
+  auth.authorizeRole(["HR", "HM", "BDM"]), // ✅ Only allowed roles
+  hiringController.getSingleInterview
+);
+
+
+// ✅ Update Interview (Protected Route)
+router.put(
+  "/interview/update",
+  auth.authenticateJWT,
+  auth.authorizeRole(["HR", "HM", "BDM"]), // ✅ Only allowed roles
+  hiringController.updateInterview
+);
+
+
+// ✅ Update Interview (Protected Route)
+router.put(
+  "/interview/deactivate",
+  auth.authenticateJWT,
+  auth.authorizeRole(["HR", "HM", "BDM"]), // ✅ Only allowed roles
+  hiringController.updateInterview
+);
+
 
 ////----------------------------------------------------------------//////////////////
 

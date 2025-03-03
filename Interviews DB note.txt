@@ -1,0 +1,10 @@
+intInterview collection 
+ crceate interview by ----HR,HM,BDM
+                            ---Name of the role positon (for the hyring)
+                           -----Name of the candidate: (Name of the candidate fpor the interview)
+                           ------Experience Of the Candidate :  (Experience of the candidate )
+                           ------Status of the interview : (New/Processing/Complited)
+                           -------Status of Hiring : (Active/Deactive)
+                          --------Result :  (Hired/NotHired)
+                         ----------Date:   (created curent time)
+                       ------------LastUpdate:   (chan ge current time when only new entry was on   Status of the interview is updated  like when we cahnge somting on Result ,Status of the interview or any Change on Status of Hiring  )
