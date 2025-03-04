@@ -68,13 +68,19 @@ exports.forgotPassword = async (req, res) => {
       text: `Your OTP for password reset is: ${otp}. It is valid for 5 minutes.`,
     };
 
-    await transporter.sendMail(mailOptions);
+  //   await transporter.sendMail(mailOptions);
 
-    res.json({ status: "success", message: "OTP sent to your email." });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
-  }
+  //   res.json({ status: "success", message: "OTP sent to your email." });
+  // } catch (error) {
+  //   console.error(error);
+  //   res.status(500).json({ message: "Server error" });
+  // }
+
+  res.status(200).json({ status: 200, message: "OTP sent to your email." });
+} catch (error) {
+  console.error(error);
+  res.status(500).json({ status: 500, message: "Server error" });
+}
 };
 
 // ✅ Verify OTP
@@ -123,11 +129,16 @@ exports.verifyOtp = async (req, res) => {
     // Remove OTP after successful verification
     otpStore.delete(email);
 
-    res.json({ status: "verified", message: "OTP verified successfully.", resetToken });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: "Server error" });
-  }
+  //   res.json({ status: "verified", message: "OTP verified successfully.", resetToken });
+  // } catch (error) {
+  //   console.error(error);
+  //   res.status(500).json({ message: "Server error" });
+  // }
+  res.status(200).json({ status: 200, message: "OTP verified successfully.", resetToken });
+} catch (error) {
+  console.error(error);
+  res.status(500).json({ status: 500, message: "Server error" });
+}
 };
 
 
@@ -187,16 +198,26 @@ exports.resetPassword = async (req, res) => {
     // Invalidate reset token by changing JWT secret (optional)
     process.env.JWT_SECRET = crypto.randomBytes(64).toString("hex");
 
-    res.json({ message: "Password updated successfully. Reset token is now invalid." });
+//     res.json({ message: "Password updated successfully. Reset token is now invalid." });
+//     } catch (error) {
+//     console.error(error);
+//     if (error.name === "TokenExpiredError") {
+//     return res.status(400).json({ message: "Reset token has expired." });
+//     }
+//     res.status(400).json({ message: "Invalid reset token." });
+//     }
+// };
+
+
+res.status(200).json({ status: 200, message: "Password updated successfully. Reset token is now invalid." });
     } catch (error) {
     console.error(error);
     if (error.name === "TokenExpiredError") {
-    return res.status(400).json({ message: "Reset token has expired." });
+    return res.status(400).json({ status: 400, message: "Reset token has expired." });
     }
-    res.status(400).json({ message: "Invalid reset token." });
+    res.status(400).json({ status: 400, message: "Invalid reset token." });
     }
 };
-
 
 
 

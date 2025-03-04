@@ -15,13 +15,20 @@ const SuperAdmin = require('../models/SuperAdmin');
 
 
 
-// // ✅ Update HR Profile
+// // ✅ Update Employee Profile
 // exports.updateEmployeeProfile = async (req, res) => {
 //   try {
-//     const { id } = req.user; // Extracted from JWT
+//     const { id, status } = req.user; // Extract status from JWT
 //     const { name, username, dob, mobile, email, residenceAddress } = req.body;
 
-//     // 1️⃣ **Check if the logged-in user is HR**
+//     console.log(`🔹 Updating Employee Profile - User ID: ${id}, Status: ${status}`);
+
+//     // ❌ Check if the user's status is "Active"
+//     if (status !== "Active") {
+//       return res.status(403).json({ message: "Your account is not active" });
+//     }
+
+//     // 1️⃣ **Check if the logged-in user is an Employee**
 //     const employee = await Employee.findOne({ _id: id, role: "Employee" });
 
 //     if (!employee) {
@@ -38,6 +45,7 @@ const SuperAdmin = require('../models/SuperAdmin');
 
 //     await employee.save();
 
+//     console.log("✅ Employee Profile Updated Successfully:", employee);
 //     res.status(200).json({ message: "Employee profile updated successfully", data: employee });
 
 //   } catch (error) {
@@ -45,6 +53,7 @@ const SuperAdmin = require('../models/SuperAdmin');
 //     res.status(500).json({ message: "Error updating profile", error: error.message });
 //   }
 // };
+
 
 
 
@@ -58,14 +67,14 @@ exports.updateEmployeeProfile = async (req, res) => {
 
     // ❌ Check if the user's status is "Active"
     if (status !== "Active") {
-      return res.status(403).json({ message: "Your account is not active" });
+      return res.status(403).json({ status: 403, message: "Your account is not active" });
     }
 
     // 1️⃣ **Check if the logged-in user is an Employee**
     const employee = await Employee.findOne({ _id: id, role: "Employee" });
 
     if (!employee) {
-      return res.status(403).json({ message: "Unauthorized access" });
+      return res.status(403).json({ status: 403, message: "Unauthorized access" });
     }
 
     // 2️⃣ **Update the profile fields if provided**
@@ -79,61 +88,75 @@ exports.updateEmployeeProfile = async (req, res) => {
     await employee.save();
 
     console.log("✅ Employee Profile Updated Successfully:", employee);
-    res.status(200).json({ message: "Employee profile updated successfully", data: employee });
+    res.status(200).json({ status: 200, message: "Employee profile updated successfully", data: employee });
 
   } catch (error) {
     console.error("❌ Error Updating Employee Profile:", error.message);
-    res.status(500).json({ message: "Error updating profile", error: error.message });
+    res.status(500).json({ status: 500, message: "Error updating profile", error: error.message });
   }
 };
 
 
 
 
+
+
+
+  
+
 // exports.viewCandidate = async (req, res) => {
-//     try {
-//       const { candidateId } = req.body; // Get the candidate ID from the request body
-//       const employeeId = req.user.id; // Employee ID from JWT
-  
-//       // Fetch the Employee user to check their access
-//       const employee = await Employee.findById(employeeId);
-//       if (!employee) {
-//         return res.status(404).json({ message: "Employee not found" });
-//       }
-  
-//       // Check if Employee has 'view' permission
-//       if (!employee.access.includes("view")) {
-//         return res.status(403).json({ message: "Access denied: You do not have permission to view profiles" });
-//       }
-  
-//       // Check if the candidate is a Super Admin - Employee cannot view Super Admin profiles
-//       const superAdmin = await SuperAdmin.findById(candidateId);
-//       if (superAdmin) {
-//         return res.status(403).json({ message: "Access denied: You cannot view the Super Admin profile" });
-//       }
-  
-//       // ✅ Fetch candidate only from allowed collections ( Employee, Employee)
-//       const allowedCollections = {Employee };
-  
-//       let candidate = null;
-//       for (const role in allowedCollections) {
-//         candidate = await allowedCollections[role].findById(candidateId);
-//         if (candidate) break; // Stop searching once a valid candidate is found
-//       }
-  
-//       if (!candidate) {
-//         return res.status(404).json({ message: "Candidate not found or unauthorized to view this profile" });
-//       }
-  
-//       // Respond with the candidate profile
-//       res.status(200).json({ message: "Candidate profile fetched successfully", data: candidate });
-  
-//     } catch (error) {
-//       console.error("❌ Error Viewing Candidate Profile:", error.message);
-//       res.status(500).json({ message: "Error viewing candidate profile", error: error.message });
+//   try {
+//     const { candidateId } = req.body; // Get the candidate ID from the request body
+//     const { id: employeeId, status } = req.user; // Extract Employee ID & Status from JWT
+
+//     console.log(`🔹 Viewing Candidate Profile - Employee ID: ${employeeId}, Status: ${status}`);
+
+//     // ❌ Check if the user's status is "Active"
+//     if (status !== "Active") {
+//       return res.status(403).json({ message: "Your account is not active" });
 //     }
-//   };
-  
+
+//     // Fetch the Employee user to check their access
+//     const employee = await Employee.findById(employeeId);
+//     if (!employee) {
+//       return res.status(404).json({ message: "Employee not found" });
+//     }
+
+//     // Check if Employee has 'view' permission
+//     if (!employee.access.includes("view")) {
+//       return res.status(403).json({ message: "Access denied: You do not have permission to view profiles" });
+//     }
+
+//     // Check if the candidate is a Super Admin - Employee cannot view Super Admin profiles
+//     const superAdmin = await SuperAdmin.findById(candidateId);
+//     if (superAdmin) {
+//       return res.status(403).json({ message: "Access denied: You cannot view the Super Admin profile" });
+//     }
+
+//     // ✅ Fetch candidate only from allowed collections (Employee)
+//     const allowedCollections = { Employee };
+
+//     let candidate = null;
+//     for (const role in allowedCollections) {
+//       candidate = await allowedCollections[role].findById(candidateId);
+//       if (candidate) break; // Stop searching once a valid candidate is found
+//     }
+
+//     if (!candidate) {
+//       return res.status(404).json({ message: "Candidate not found or unauthorized to view this profile" });
+//     }
+
+//     console.log("✅ Candidate Profile Fetched Successfully:", candidate);
+//     res.status(200).json({ message: "Candidate profile fetched successfully", data: candidate });
+
+//   } catch (error) {
+//     console.error("❌ Error Viewing Candidate Profile:", error.message);
+//     res.status(500).json({ message: "Error viewing candidate profile", error: error.message });
+//   }
+// };
+
+
+
 
 exports.viewCandidate = async (req, res) => {
   try {
@@ -144,24 +167,24 @@ exports.viewCandidate = async (req, res) => {
 
     // ❌ Check if the user's status is "Active"
     if (status !== "Active") {
-      return res.status(403).json({ message: "Your account is not active" });
+      return res.status(403).json({ status: 403, message: "Your account is not active" });
     }
 
     // Fetch the Employee user to check their access
     const employee = await Employee.findById(employeeId);
     if (!employee) {
-      return res.status(404).json({ message: "Employee not found" });
+      return res.status(404).json({ status: 404, message: "Employee not found" });
     }
 
     // Check if Employee has 'view' permission
     if (!employee.access.includes("view")) {
-      return res.status(403).json({ message: "Access denied: You do not have permission to view profiles" });
+      return res.status(403).json({ status: 403, message: "Access denied: You do not have permission to view profiles" });
     }
 
     // Check if the candidate is a Super Admin - Employee cannot view Super Admin profiles
     const superAdmin = await SuperAdmin.findById(candidateId);
     if (superAdmin) {
-      return res.status(403).json({ message: "Access denied: You cannot view the Super Admin profile" });
+      return res.status(403).json({ status: 403, message: "Access denied: You cannot view the Super Admin profile" });
     }
 
     // ✅ Fetch candidate only from allowed collections (Employee)
@@ -174,17 +197,21 @@ exports.viewCandidate = async (req, res) => {
     }
 
     if (!candidate) {
-      return res.status(404).json({ message: "Candidate not found or unauthorized to view this profile" });
+      return res.status(404).json({ status: 404, message: "Candidate not found or unauthorized to view this profile" });
     }
 
     console.log("✅ Candidate Profile Fetched Successfully:", candidate);
-    res.status(200).json({ message: "Candidate profile fetched successfully", data: candidate });
+    res.status(200).json({ status: 200, message: "Candidate profile fetched successfully", data: candidate });
 
   } catch (error) {
     console.error("❌ Error Viewing Candidate Profile:", error.message);
-    res.status(500).json({ message: "Error viewing candidate profile", error: error.message });
+    res.status(500).json({ status: 500, message: "Error viewing candidate profile", error: error.message });
   }
 };
+
+
+
+
 
 
 
@@ -193,6 +220,14 @@ exports.viewCandidate = async (req, res) => {
 // exports.viewAllCandidates = async (req, res) => {
 //   try {
 //     const { role } = req.body; // Role passed in the request body
+//     const { status } = req.user; // Extract status from JWT
+
+//     console.log(`🔹 Viewing All Candidates - Status: ${status}, Role: ${role}`);
+
+//     // ❌ Check if the user's status is "Active"
+//     if (status !== "Active") {
+//       return res.status(403).json({ message: "Your account is not active" });
+//     }
 
 //     // Validate role
 //     if (!['Employee', 'Employee', 'Employee'].includes(role)) {
@@ -208,7 +243,7 @@ exports.viewCandidate = async (req, res) => {
 //     // Remove any super-admin candidates from the result
 //     candidates = candidates.filter(candidate => candidate.role !== 'super-admin');
 
-//     // Return candidates
+//     console.log("✅ Candidates Fetched Successfully:", candidates.length);
 //     res.status(200).json({
 //       message: "Candidates fetched successfully",
 //       data: candidates,
@@ -232,12 +267,12 @@ exports.viewAllCandidates = async (req, res) => {
 
     // ❌ Check if the user's status is "Active"
     if (status !== "Active") {
-      return res.status(403).json({ message: "Your account is not active" });
+      return res.status(403).json({ status: 403, message: "Your account is not active" });
     }
 
     // Validate role
     if (!['Employee', 'Employee', 'Employee'].includes(role)) {
-      return res.status(400).json({ message: "Invalid role specified" });
+      return res.status(400).json({ status: 400, message: "Invalid role specified" });
     }
 
     // Dynamically fetch candidates based on role (collection)
@@ -251,11 +286,12 @@ exports.viewAllCandidates = async (req, res) => {
 
     console.log("✅ Candidates Fetched Successfully:", candidates.length);
     res.status(200).json({
+      status: 200,
       message: "Candidates fetched successfully",
       data: candidates,
     });
   } catch (error) {
     console.error("❌ Error Fetching Candidates:", error.message);
-    res.status(500).json({ message: "Error fetching candidates", error: error.message });
+    res.status(500).json({ status: 500, message: "Error fetching candidates", error: error.message });
   }
 };

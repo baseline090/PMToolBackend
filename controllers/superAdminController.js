@@ -219,28 +219,52 @@ exports.adminLogin = async (req, res) => {
 
     const token = jwt.sign(tokenPayload, process.env.JWT_SECRET, { expiresIn: "1d" });
 
-    // ✅ Response with Token & User Info
-    res.json({
-      message: "Login successful",
-      token,
-      user: {
-        id: user._id,
-        name: user.name,
-        username: user.username,
-        email: user.email,
-        role: userType,
-        access: user.access,
-        status: user.status,
-        permissions: user.permissions || [],
-      },
-    });
+//     // ✅ Response with Token & User Info
+//     res.json({
+//       message: "Login successful",
+//       token,
+//       user: {
+//         id: user._id,
+//         name: user.name,
+//         username: user.username,
+//         email: user.email,
+//         role: userType,
+//         access: user.access,
+//         status: user.status,
+//         permissions: user.permissions || [],
+//       },
+//     });
 
-  } catch (error) {
-    console.error("❌ Login Error:", error.message);
-    res.status(500).json({ message: "Error logging in", error: error.message });
-  }
+//   } catch (error) {
+//     console.error("❌ Login Error:", error.message);
+//     res.status(500).json({ message: "Error logging in", error: error.message });
+//   }
+// };
+
+
+
+// ✅ Response with Token & User Info
+res.status(200).json({
+  status: 200,
+  message: "Login successful",
+  token,
+  user: {
+    id: user._id,
+    name: user.name,
+    username: user.username,
+    email: user.email,
+    role: userType,
+    access: user.access,
+    status: user.status,
+    permissions: user.permissions || [],
+  },
+});
+
+} catch (error) {
+console.error("❌ Login Error:", error.message);
+res.status(500).json({ status: 500, message: "Error logging in", error: error.message });
+}
 };
-
 
 
 

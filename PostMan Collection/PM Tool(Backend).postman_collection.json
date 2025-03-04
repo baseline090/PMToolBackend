@@ -3058,6 +3058,300 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Add_Interview",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5NzM4OTUsImV4cCI6MTc0MTA2MDI5NX0.-QxtYYF_xylUSwhf9ZLO2z4fMCLqsFtf7F-MUedvZ-8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rolePosition\": \"Software Engineer\",\r\n  \"candidateName\": \"John Doe\",\r\n  \"experience\": \"5 years\",\r\n  \"email\": \"johndoe@example.com\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/interview/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"interview",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get_Interview_List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5NzM4OTUsImV4cCI6MTc0MTA2MDI5NX0.-QxtYYF_xylUSwhf9ZLO2z4fMCLqsFtf7F-MUedvZ-8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3010/api/interview/all-list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"interview",
+										"all-list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get_Interview_Single-List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5NzM4OTUsImV4cCI6MTc0MTA2MDI5NX0.-QxtYYF_xylUSwhf9ZLO2z4fMCLqsFtf7F-MUedvZ-8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3010/api/interview/single-list/67c52d25bf55ce2199cf5a81",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"interview",
+										"single-list",
+										"67c52d25bf55ce2199cf5a81"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Update_Single_Employee",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5ODExMTAsImV4cCI6MTc0MTA2NzUxMH0.rJHhL-7l9PL90yO2pAgjzoSQxjrV8iMgNueLELexAU8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67c53e4ae667064ae76f4b41\",\r\n  \"experience\": \"Fresher\",\r\n  \"interviewStatus\": \"Processing\",\r\n  \"hiringStatus\": \"Active\",\r\n  \"result\": \"Processing\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/interview/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"interview",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Interview_Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5ODExMTAsImV4cCI6MTc0MTA2NzUxMH0.rJHhL-7l9PL90yO2pAgjzoSQxjrV8iMgNueLELexAU8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67c53e47e667064ae76f4b3e\",\r\n  \"experience\": \"Freshers\",\r\n  \"interviewStatus\": \"Completed\",\r\n  \"result\": \"Hired\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/interview/update",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"interview",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Interview_Deactivate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5ODExMTAsImV4cCI6MTc0MTA2NzUxMH0.rJHhL-7l9PL90yO2pAgjzoSQxjrV8iMgNueLELexAU8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67c53e47e667064ae76f4b3e\",\r\n  \"hiringStatus\": \"Deactive\"   //Active or Deavtive\r\n\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/interview/deactivate",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"interview",
+										"deactivate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create_Project",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5OTUyMDYsImV4cCI6MTc0MTA4MTYwNn0.IFhgn7m9o8G2i9m7M-EQ4TvvySaW462p-sgc-1TUvtc",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"AI Development\",\r\n  \"employeeId\": \"67c1323f4e887d17eea01881\",\r\n  \"hoursAllowed\": 80\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3010/api/project/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"project",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get_All_Projects",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5OTg2MDQsImV4cCI6MTc0MTA4NTAwNH0.dcc8l3RN_mU1Qz3-QFKizce_mmRA-ZMVYZXpbAcKHw8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3010/api/project/all-list",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3010",
+									"path": [
+										"api",
+										"project",
+										"all-list"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
@@ -5755,6 +6049,245 @@
 								}
 							},
 							"response": []
+						},
+						{
+							"name": "Add_Interview",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5NzM4OTUsImV4cCI6MTc0MTA2MDI5NX0.-QxtYYF_xylUSwhf9ZLO2z4fMCLqsFtf7F-MUedvZ-8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rolePosition\": \"Software Engineer\",\r\n  \"candidateName\": \"John Doe\",\r\n  \"experience\": \"5 years\",\r\n  \"email\": \"johndoe@example.com\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}api/interview/create",
+									"host": [
+										"{{render}}api"
+									],
+									"path": [
+										"interview",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get_Interview_List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5NzM4OTUsImV4cCI6MTc0MTA2MDI5NX0.-QxtYYF_xylUSwhf9ZLO2z4fMCLqsFtf7F-MUedvZ-8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{render}}/api/interview/all-list",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"interview",
+										"all-list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get_Interview_Single-List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5NzM4OTUsImV4cCI6MTc0MTA2MDI5NX0.-QxtYYF_xylUSwhf9ZLO2z4fMCLqsFtf7F-MUedvZ-8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{render}}/api/interview/single-list/67c52d25bf55ce2199cf5a81",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"interview",
+										"single-list",
+										"67c52d25bf55ce2199cf5a81"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Interview_Update Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5ODExMTAsImV4cCI6MTc0MTA2NzUxMH0.rJHhL-7l9PL90yO2pAgjzoSQxjrV8iMgNueLELexAU8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67c53e47e667064ae76f4b3e\",\r\n  \"experience\": \"Freshers\",\r\n  \"interviewStatus\": \"Completed\",\r\n  \"hiringStatus\": \"Deactive\",\r\n  \"result\": \"Hired\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/interview/update",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"interview",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Interview_Deactivate",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5ODExMTAsImV4cCI6MTc0MTA2NzUxMH0.rJHhL-7l9PL90yO2pAgjzoSQxjrV8iMgNueLELexAU8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67c53e47e667064ae76f4b3e\",\r\n  \"hiringStatus\": \"Deactive\"   //Active or Deavtive\r\n\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/interview/deactivate",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"interview",
+										"deactivate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create_Project",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU5NDA3M2E3NDM1OTc0YzUxZTM4NCIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3NDEwMDAzNTEsImV4cCI6MTc0MTA4Njc1MX0.DmxObcK-gt5YGlZ_0G3ZwVpPJuc4ANMJ29YvPCYxWI0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"AI Development\",\r\n  \"employeeId\": \"67c1323f4e887d17eea01881\",\r\n  \"hoursAllowed\": 80\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{render}}/api/project/create",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"project",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get_All_Projects",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU5NDA3M2E3NDM1OTc0YzUxZTM4NCIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwibmVwb3dlciJdLCJpYXQiOjE3NDEwMDAzNTEsImV4cCI6MTc0MTA4Njc1MX0.DmxObcK-gt5YGlZ_0G3ZwVpPJuc4ANMJ29YvPCYxWI0",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{render}}/api/project/all-list",
+									"host": [
+										"{{render}}"
+									],
+									"path": [
+										"api",
+										"project",
+										"all-list"
+									]
+								}
+							},
+							"response": []
 						}
 					]
 				}
@@ -8403,14 +8936,243 @@
 									}
 								},
 								"url": {
-									"raw": "{{render}}/api/notices/update",
+									"raw": "{{vercel}}/api/notices/update",
 									"host": [
-										"{{render}}"
+										"{{vercel}}"
 									],
 									"path": [
 										"api",
 										"notices",
 										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Add_Interview Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5NzM4OTUsImV4cCI6MTc0MTA2MDI5NX0.-QxtYYF_xylUSwhf9ZLO2z4fMCLqsFtf7F-MUedvZ-8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"rolePosition\": \"Software Engineer\",\r\n  \"candidateName\": \"John Doe\",\r\n  \"experience\": \"5 years\",\r\n  \"email\": \"johndoe@example.com\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}api/interview/create",
+									"host": [
+										"{{vercel}}api"
+									],
+									"path": [
+										"interview",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get_Interview_List Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5NzM4OTUsImV4cCI6MTc0MTA2MDI5NX0.-QxtYYF_xylUSwhf9ZLO2z4fMCLqsFtf7F-MUedvZ-8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{vercel}}/api/interview/all-list",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"interview",
+										"all-list"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get_Interview_Single-List",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5NzM4OTUsImV4cCI6MTc0MTA2MDI5NX0.-QxtYYF_xylUSwhf9ZLO2z4fMCLqsFtf7F-MUedvZ-8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{vercel}}/api/interview/single-list/67c52d25bf55ce2199cf5a81",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"interview",
+										"single-list",
+										"67c52d25bf55ce2199cf5a81"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Interview_Update",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5ODExMTAsImV4cCI6MTc0MTA2NzUxMH0.rJHhL-7l9PL90yO2pAgjzoSQxjrV8iMgNueLELexAU8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67c53e47e667064ae76f4b3e\",\r\n  \"experience\": \"Freshers\",\r\n  \"interviewStatus\": \"Completed\",\r\n  \"hiringStatus\": \"Deactive\",\r\n  \"result\": \"Hired\"\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/interview/update",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"interview",
+										"update"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Interview_Deactivate Copy",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5ODExMTAsImV4cCI6MTc0MTA2NzUxMH0.rJHhL-7l9PL90yO2pAgjzoSQxjrV8iMgNueLELexAU8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"candidateId\": \"67c53e47e667064ae76f4b3e\",\r\n  \"hiringStatus\": \"Deactive\"   //Active or Deavtive\r\n\r\n}\r\n",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/interview/deactivate",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"interview",
+										"deactivate"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create_Project",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"title\": \"AI Development\",\r\n  \"employeeId\": \"67c1323f4e887d17eea01881\",\r\n  \"hoursAllowed\": 80\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{vercel}}/api/project/create",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"project",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Get_All_Projects",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY3YjU2Y2MyYzU0NDhhMGE0ZGI0NTkzNiIsInJvbGUiOiJIUiIsImFjY2VzcyI6InZpZXcsZWRpdCx1cGRhdGUsYWRkLGRlbGV0ZSIsInN0YXR1cyI6IkFjdGl2ZSIsInBlcm1pc3Npb25zIjpbImRhc2hib2FyZCIsImVtcGxveWVlIiwidGFza3MiLCJwcm9qZWN0cyIsIk5vdGljZSIsImxlYXZlcyJdLCJpYXQiOjE3NDA5OTg2MDQsImV4cCI6MTc0MTA4NTAwNH0.dcc8l3RN_mU1Qz3-QFKizce_mmRA-ZMVYZXpbAcKHw8",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{vercel}}/api/project/all-list",
+									"host": [
+										"{{vercel}}"
+									],
+									"path": [
+										"api",
+										"project",
+										"all-list"
 									]
 								}
 							},

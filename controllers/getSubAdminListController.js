@@ -15,12 +15,19 @@ const authorizedRoles = ["HR", "BDM", "TeamLead", "PM", "HM", "SuperAdmin"];
 const authorizedRoles2 = ["PM", "HM", "HR", "SuperAdmin", "TeamLead", "Employee"];
 
 
+
+
 // exports.getSubAdminList = async (req, res) => {
 //     try {
-//         const { role, access } = req.user; // Extract role & access from JWT
+//         const { role, access, status } = req.user; // ✅ Extract status from JWT
 //         const { role: requestedRole } = req.body; // Get role from request body
 
-//         console.log(`🔹 Fetching Sub-Admin List - Requested by: ${role} | Access: ${access}`);
+//         console.log(`🔹 Fetching Sub-Admin List - Requested by: ${role} | Access: ${access} | Status: ${status}`);
+
+//         // ❌ Check if the user's status is "Active"
+//         if (status !== "Active") {
+//             return res.status(403).json({ message: "Your account is not active" });
+//         }
 
 //         // ✅ Validate requested role
 //         if (!["HR", "BDM", "TeamLead", "PM", "HM", "Employee"].includes(requestedRole)) {
@@ -66,8 +73,6 @@ const authorizedRoles2 = ["PM", "HM", "HR", "SuperAdmin", "TeamLead", "Employee"
 
 
 
-
-
 exports.getSubAdminList = async (req, res) => {
     try {
         const { role, access, status } = req.user; // ✅ Extract status from JWT
@@ -77,12 +82,12 @@ exports.getSubAdminList = async (req, res) => {
 
         // ❌ Check if the user's status is "Active"
         if (status !== "Active") {
-            return res.status(403).json({ message: "Your account is not active" });
+            return res.status(403).json({ status: 403, message: "Your account is not active" });
         }
 
         // ✅ Validate requested role
         if (!["HR", "BDM", "TeamLead", "PM", "HM", "Employee"].includes(requestedRole)) {
-            return res.status(400).json({ message: "Invalid role specified" });
+            return res.status(400).json({ status: 400, message: "Invalid role specified" });
         }
 
         let candidates = [];
@@ -112,24 +117,37 @@ exports.getSubAdminList = async (req, res) => {
         console.log(`✅ ${requestedRole} Candidates Fetched Successfully: ${candidates.length} records`);
 
         res.status(200).json({
+            status: 200,
             message: `${requestedRole} candidates fetched successfully`,
             data: candidates,
         });
 
     } catch (error) {
         console.error("❌ Error Fetching Sub-Admin List:", error.message);
-        res.status(500).json({ message: "Error fetching sub-admin list", error: error.message });
+        res.status(500).json({ 
+            status: 500,
+            message: "Error fetching sub-admin list", 
+            error: error.message 
+        });
     }
 };
 
 
 
 
+
+
+
 // exports.getAllCandidates = async (req, res) => {
 //     try {
-//         const { role, access } = req.user;
+//         const { role, access, status } = req.user; // ✅ Extract status from JWT
 
-//         console.log(`🔹 Fetching All Candidates - Requested by: ${role} | Access: ${access}`);
+//         console.log(`🔹 Fetching All Candidates - Requested by: ${role} | Access: ${access} | Status: ${status}`);
+
+//         // ❌ Check if the user's status is "Active"
+//         if (status !== "Active") {
+//             return res.status(403).json({ message: "Your account is not active" });
+//         }
 
 //         // ✅ Check if role is allowed
 //         const allowedRoles = ["PM", "HM", "HR", "TeamLead", "SuperAdmin", "Employee"];
@@ -192,20 +210,20 @@ exports.getAllCandidates = async (req, res) => {
 
         // ❌ Check if the user's status is "Active"
         if (status !== "Active") {
-            return res.status(403).json({ message: "Your account is not active" });
+            return res.status(403).json({ status: 403, message: "Your account is not active" });
         }
 
         // ✅ Check if role is allowed
         const allowedRoles = ["PM", "HM", "HR", "TeamLead", "SuperAdmin", "Employee"];
         if (!allowedRoles.includes(role)) {
-            return res.status(403).json({ message: "Access denied" });
+            return res.status(403).json({ status: 403, message: "Access denied" });
         }
 
         // ✅ Check if access is "view" or "full-access"
         const allowedAccess = ["view", "full-access"];
         const userAccessArray = access.split(","); // Convert access string to array
         if (!userAccessArray.some((acc) => allowedAccess.includes(acc))) {
-            return res.status(403).json({ message: "Insufficient access rights" });
+            return res.status(403).json({ status: 403, message: "Insufficient access rights" });
         }
 
         let candidates = [];
@@ -236,12 +254,17 @@ exports.getAllCandidates = async (req, res) => {
         console.log(`✅ Candidates Fetched Successfully: ${candidates.length} records`);
 
         res.status(200).json({
+            status: 200,
             message: "All candidates fetched successfully",
             data: candidates,
         });
 
     } catch (error) {
         console.error("❌ Error Fetching Candidates:", error.message);
-        res.status(500).json({ message: "Error fetching candidates", error: error.message });
+        res.status(500).json({ 
+            status: 500,
+            message: "Error fetching candidates", 
+            error: error.message 
+        });
     }
 };

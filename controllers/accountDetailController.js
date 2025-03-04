@@ -17,12 +17,19 @@ const roleModelMap = {
     SuperAdmin
 };
 
+
+
 // // ✅ Get Account Details API
 // exports.getAccountDetails = async (req, res) => {
 //     try {
-//         const { id, role } = req.user; // ✅ Extract user ID & Role from JWT
+//         const { id, role, status } = req.user; // ✅ Extract status from JWT
 
-//         console.log(`🔹 Fetching Account Details for User ID: ${id}, Role: ${role}`);
+//         console.log(`🔹 Fetching Account Details for User ID: ${id}, Role: ${role}, Status: ${status}`);
+
+//         // ❌ Check if the user's status is "Active"
+//         if (status !== "Active") {
+//             return res.status(403).json({ message: "Your account is not active" });
+//         }
 
 //         // ✅ Get the respective model based on role
 //         const RoleModel = roleModelMap[role];
@@ -57,27 +64,27 @@ exports.getAccountDetails = async (req, res) => {
 
         // ❌ Check if the user's status is "Active"
         if (status !== "Active") {
-            return res.status(403).json({ message: "Your account is not active" });
+            return res.status(403).json({ status: 403, message: "Your account is not active" });
         }
 
         // ✅ Get the respective model based on role
         const RoleModel = roleModelMap[role];
         if (!RoleModel) {
-            return res.status(400).json({ message: "Invalid role" });
+            return res.status(400).json({ status: 400, message: "Invalid role" });
         }
 
         // 🔍 Fetch user details from the correct collection
         const userData = await RoleModel.findById(id).select("-password"); // ✅ Exclude password for security
 
         if (!userData) {
-            return res.status(404).json({ message: "User not found" });
+            return res.status(404).json({ status: 404, message: "User not found" });
         }
 
         console.log("✅ Account Details Fetched Successfully:", userData);
-        res.status(200).json({ message: "Account details retrieved", data: userData });
+        res.status(200).json({ status: 200, message: "Account details retrieved", data: userData });
 
     } catch (error) {
         console.error("❌ Error Fetching Account Details:", error.message);
-        res.status(500).json({ message: "Error retrieving account details", error: error.message });
+        res.status(500).json({ status: 500, message: "Error retrieving account details", error: error.message });
     }
 };
