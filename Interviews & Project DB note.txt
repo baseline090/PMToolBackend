@@ -8,3 +8,40 @@ intInterview collection
                           --------Result :  (Hired/NotHired)
                          ----------Date:   (created curent time)
                        ------------LastUpdate:   (chan ge current time when only new entry was on   Status of the interview is updated  like when we cahnge somting on Result ,Status of the interview or any Change on Status of Hiring  )
+
+
+
+teams collection 
+these are the fileds:
+team_name,
+createed_time,  ( date tyme should be like this  : rg dd/mm/yyy (eg:01/02/2025) snfd if input id not present then it will auto save curent date)
+level: (should be leve 1,2,3,4,5 only acept thise vale)
+Type: (ahould acep only New or Old)
+employe : strores the employe id so that through thee id we can fetch the whole employee profile 
+         and in employe we can store multiple employee id so it should be in arrya and by defult it wil " " empty
+
+
+
+
+ create tem ony by role= HR,BDM,SuperAdmin
+                    acces= add,full-access,
+                    status = Active
+in jwt
+example :
+eg of jwt:
+{
+  "id": "67b56cc2c5448a0a4db45936",
+  "role": "HR",
+  "access": "view,edit,update,add,delete",
+  "status": "Active",
+  "permissions": [
+    "dashboard",
+    "employee",
+    "tasks",
+    "projects",
+    "Notice",
+    "leaves"
+  ],
+  "iat": 1740995206,
+  "exp": 1741081606
+}

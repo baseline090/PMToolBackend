@@ -27,6 +27,8 @@ const deactivateEmployeeController = require("../controllers/deactivateEmployeeC
 const noticesController = require("../controllers/noticesController"); // Controller
 const hiringController = require("../controllers/hiringController");
 const projectController = require("../controllers/projectController");
+const teamsController = require("../controllers/teamsController");
+
 
 
 
@@ -217,7 +219,7 @@ router.patch(
 router.post(
   "/interview/create",
   auth.authenticateJWT,
-  auth.authorizeRole(["HR", "HM", "BDM"]), // ✅ Only allowed roles
+  auth.authorizeRole(["HR", "HM", "BDM", "SuperAdmin"]), // ✅ Only allowed roles
   hiringController.createInterview
 );
 
@@ -227,7 +229,7 @@ router.post(
 router.get(
   "/interview/all-list",
   auth.authenticateJWT,
-  auth.authorizeRole(["HR", "HM", "BDM"]), // ✅ Only allowed roles
+  auth.authorizeRole(["HR", "HM", "BDM", "SuperAdmin"]), // ✅ Only allowed roles
   hiringController.getAllInterviews
 );
 
@@ -238,7 +240,7 @@ router.get(
 router.get(
   "/interview/single-list/:interviewId", // ✅ Takes interviewId in URL
   auth.authenticateJWT,
-  auth.authorizeRole(["HR", "HM", "BDM"]), // ✅ Only allowed roles
+  auth.authorizeRole(["HR", "HM", "BDM", "SuperAdmin"]), // ✅ Only allowed roles
   hiringController.getSingleInterview
 );
 
@@ -247,7 +249,7 @@ router.get(
 router.put(
   "/interview/update",
   auth.authenticateJWT,
-  auth.authorizeRole(["HR", "HM", "BDM"]), // ✅ Only allowed roles
+  auth.authorizeRole(["HR", "HM", "BDM", "SuperAdmin"]), // ✅ Only allowed roles
   hiringController.updateInterview
 );
 
@@ -256,7 +258,7 @@ router.put(
 router.put(
   "/interview/deactivate",
   auth.authenticateJWT,
-  auth.authorizeRole(["HR", "HM", "BDM"]), // ✅ Only allowed roles
+  auth.authorizeRole(["HR", "HM", "BDM", "SuperAdmin"]), // ✅ Only allowed roles
   hiringController.updateInterview
 );
 
@@ -264,7 +266,7 @@ router.put(
 router.post(
   "/project/create",
   auth.authenticateJWT, // ✅ Check JWT
-  auth.authorizeRole(["HR", "HM", "BDM"]), // ✅ Only allowed roles
+  auth.authorizeRole(["HR", "HM", "BDM", "SuperAdmin"]), // ✅ Only allowed roles
   projectController.createProject
 );
 
@@ -275,9 +277,35 @@ router.post(
 router.get(
   "/project/all-list",
   auth.authenticateJWT,
-  auth.authorizeRole(["HR", "HM", "BDM"]), // ✅ Only allowed roles
+  auth.authorizeRole(["HR", "HM", "BDM", "SuperAdmin"]), // ✅ Only allowed roles
   projectController.getAllProjects
 );
+
+
+// ✅ Create Team Route
+router.post(
+  "/team/create-team",
+  auth.authenticateJWT,
+  auth.authorizeRole(["HR", "HM", "BDM", "SuperAdmin"]), // ✅ Only allowed roles
+  teamsController.createTeam
+);
+
+
+
+
+
+// 📌 Add Employee to Team
+router.post("/team/add-employee", auth.authenticateJWT,
+  auth.authorizeRole(["HR", "HM", "BDM", "SuperAdmin"]), // ✅ Only allowed roles
+  teamsController.addEmployeeToTeam
+);
+
+// 📌 Update Team
+router.put("/update-team", auth.authenticateJWT,
+  auth.authorizeRole(["HR", "HM", "BDM", "SuperAdmin"]), // ✅ Only allowed roles
+  teamsController.updateTeam
+);
+
 
 ////----------------------------------------------------------------//////////////////
 
